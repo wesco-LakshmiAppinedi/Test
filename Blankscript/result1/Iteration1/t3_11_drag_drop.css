@@ -1,0 +1,63 @@
+/**
+this file should be included in a JSP if drag and drop or selection list are used
+**/
+
+/* selectable list */
+.selectableList {
+}
+
+.selectableList th {
+	background: #016FC9;
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: center;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+}
+
+.selectableList table {
+	padding: 0px;
+}
+
+.selectableList td {
+	color: black;
+	font-size: 10pt;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px
+}
+
+.selectableList select {
+	background: WHITE;
+	color: BLACK;
+}
+/* end selectable list */
+
+/* start drag and drop */
+.dragDropSelectItem {
+	background: #D9CCEE;
+	border: 1px solid #8D65CB;
+	cursor: move;
+}
+
+.dragDropTable {
+	background-color: white;
+	border: 1px;
+}
+
+.dragDropTable td {
+	padding: 5px;
+	width: 200px;
+	height: 200px;
+	vertical-align: top;
+	border: 1px solid #CCCCCC;
+}
+
+.dragDropTable th {
+	padding: 0px;
+	width: 200px;
+}
+/* end drag and drop */

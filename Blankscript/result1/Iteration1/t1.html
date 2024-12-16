@@ -1,0 +1,246 @@
+
+<html>
+<head><script type='text/javascript' src='/wmx/a4j.res/org.ajax4jsf.framework.ajax.AjaxScript.faces'></script><META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980">
+<link rel="shortcut icon" href="/wmx/favicon-32x32.png" type="image/png">
+<link rel="icon" href="/wmx/favicon-32x32.png" type="image/png">
+<title>WMX Cloud - Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/wmx/css/wmx_consolidated.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="javascript/appscript.js" type="text/javascript"></script> 
+<script language="JavaScript" src="javascript/loginscript.js" type="text/javascript"></script> 
+<script type="text/javascript" src="javascript/dhtmlwindow.js"></script>
+<link rel="stylesheet" type="text/css" href="/wmx/css/anixter-wmx-redesign.css"></link>
+
+</head>
+		<body onload="OnLoad()">
+			<div id="overlayDiv" class="overlay" style="display:none"></div>
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr id="rowTopHeader" valign="top">
+					<td style="background-color: #F7F7F7;">
+						<table width="100%" cellpadding="1" cellspacing="0">
+							<tr valign="middle">
+								<td align="left"><img src="/wmx/image/WMX_logo_ia_bolt.png" alt="WMX Cloud"	align="left" /></td>
+								<td align="left" class="title">
+									Quality
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr id="rowTitle">
+					<td valign="top" width="100%">
+						<table class="TemplateTitleBar" width="100%">
+							<tr>
+								<td width="40%" class="title">
+									
+								</td>
+								<td width="60%" class="message">
+									
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr id="rowMessage">
+					<td id="MessageArea" class="MessageArea" valign="top" >	
+				 
+		 				<span class="error"></span>
+		 			</td>
+				</tr>
+				<tr id="rowContent">
+					<td colspan=2 id="TemplateContentArea" class="TemplateContentArea"
+						align="center" valign="top">
+						<form id="body_tile:login" name="body_tile:login" method="post" action="/wmx/login.faces" enctype="application/x-www-form-urlencoded"><center>
+ 		<script type="text/javascript" >
+  
+		   document.cookie="currentLoginPage=Web;expires=0;path=/wmx";
+		   
+		    let ca = document.cookie.split(';');
+		    for(let i = 0; i < ca.length; i++) {
+		      let c = ca[i];
+		      while (c.charAt(0) == ' ') {
+		        c = c.substring(1);
+		      }
+
+		      let cookNV = c.split('=');
+		      if ("userAuthenticated" == cookNV[0]) {
+		    	    document.cookie = cookNV[0] + "=LOGIN;path=/wmx";
+			   }
+		    }
+          
+		  function showDiv()
+		  {
+		    var dcSearchMsgDiv = document.getElementById('dcSearch');
+		    dcSearchMsgDiv.style.visibility='visible';
+		     
+		  }
+		  
+		   function hideDiv()
+		  {
+		 
+		    var dcSearchMsgDiv = document.getElementById('dcSearch')
+		    dcSearchMsgDiv.style.visibility='hidden';
+		  }
+		  
+			function qs(search_for) {
+				try{
+					var query = window.location.search.substring(1);
+					var parms = query.split('&');
+					for (var i=0; i<parms.length; i++) {
+						var pos = parms[i].indexOf('=');
+						if (pos > 0 && search_for == parms[i].substring(0,pos)) {
+							return parms[i].substring(pos+1);
+						}
+					}
+				}catch{}
+				return "";
+			}
+			
+		    window.onload = function () { 
+
+		    	var span = document.getElementById("body_tile:login:qpDisplay");
+		    	span.textContent = decodeURI(qs("details"));
+		    }
+		 
+	</script>			 
+ <table id="body_tile:login:errorInfo" class="center"><tbody><tr><td><span style="height:20px">&nbsp;</span></td><td><span class="error"></span></td><td></td><td><span style="height:20px">&nbsp;</span></td></tr>
+</tbody></table><table id="body_tile:login:errorInfo2" class="center"><tbody><tr><td><span style="height:20px">&nbsp;</span></td><td></td><td><span style="height:20px">&nbsp;</span></td><td></td></tr>
+</tbody></table><table id="body_tile:login:errorInfo3" class="center"><tbody><tr><td><span style="height:20px">&nbsp;</span></td><td><span id="body_tile:login:qpDisplay" class="error"></span></td><td></td><td></td></tr>
+</tbody></table><table id="body_tile:login:userInfo" cellspacing="7" width="30%" style="text-align: center;" class="form"><tbody><tr><td class="label"><span class="requiredAsterisk">*</span>User:</td><td class="data"><input id="body_tile:login:username" name="body_tile:login:username" type="text" value="" onblur="showDiv();;A4J.AJAX.Submit('j_id_jsp_1983690674_0','body_tile:login',event,{'actionUrl':'/wmx/login.faces','oncomplete':function(request,event,data){hideDiv();},'parameters':{'body_tile:login:loginAjaxCall':'body_tile:login:loginAjaxCall'} } )" /></td><td class="error"></td></tr>
+<tr><td class="label"><span class="requiredAsterisk">*</span>Password:</td><td class="data"><input type="password" id="body_tile:login:password" name="body_tile:login:password" /></td><td class="error"></td></tr>
+<tr><td class="label">DC:</td><td class="data"><select id="body_tile:login:dcCodeList" name="body_tile:login:dcCodeList" size="1">	<option value="" selected="selected">Enter valid username</option></select></td><td class="error"></td></tr>
+</tbody></table>
+		<DIV id="dcSearch" class="dcMessage">Finding DC's for this user...</DIV>
+		<DIV id="dcNone" class="dcMessage">No DC's found for this user.</DIV>
+     <br><input id="body_tile:login:submitBtn" name="body_tile:login:submitBtn" type="submit" value="Login" disabled="disabled" /></center><input type="hidden" id="flowId" name="flowId" value="5c7e7eda-d90d-4cbb-a913-e44d0205f79c" /><input type="hidden" id="_transactionId" name="_transactionId" value="5c7e7eda-d90d-4cbb-a913-e44d0205f79c" /><input type="hidden" name="body_tile:login_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="rO0ABXVyABNbTGphdmEubGFuZy5PYmplY3Q7kM5YnxBzKWwCAAB4cAAAAAN0AAExcHQACi9sb2dpbi5qc3A=" /></form>
+					</td>
+				</tr>
+			</table>
+
+			<div id="progressbar" style="display:none"><img src="image/indeterminate-progress-bar.gif" /></div><script><!--
+setupProgressBox('progressbar', 'Processing...');
+//--></script>
+						<!-- error report div -->
+			
+				<div id="errorBoxWrap" class="modalBoxWrap">
+					<div class="modalBoxOverlay">&nbsp;</div>    
+					<div class="vertical-offset">
+						<div id="errorBox" class="modalBox">	</div>
+    				</div>
+				</div>
+				
+			<script type="text/javascript">
+				// just set focus    
+				setFocus();
+			</script>
+			
+				<script type="text/javascript">
+					var cookieName = "currentLocation";
+
+					function writeLocationCookie(value) {
+						var expirationDate = new Date();
+						expirationDate.setFullYear(2099);
+						expirationDate = expirationDate.toGMTString();
+						
+						document.cookie=cookieName + "=" + escape(value) + ";expires=" + expirationDate;
+					}
+					
+					function readLocationCookie() {
+						var locationCookie = document.cookie;
+						if( locationCookie.length > 0 ) {
+							c_start=locationCookie.indexOf(cookieName + "=")
+							if (c_start!=-1) {
+								c_start=c_start + cookieName.length+1 
+								c_end=locationCookie.indexOf(";",c_start)
+								if (c_end!=-1) {
+									var locationId = unescape(document.cookie.substring(c_start,c_end));
+									return locationId;
+								} else {
+									var locationId = unescape(document.cookie.substring(c_start));
+									return locationId.trim();
+								}
+							} 
+						}
+						return null;
+					}
+		
+					var locationId=readLocationCookie();
+	
+					if( locationId != null) {
+						var locationSelect = document.getElementById("queryformLocation");
+						if (locationSelect) {
+							locationSelect.value = locationId;
+							// if the user switched DC's, then locationId may not be in the list...
+							if (locationSelect.value != locationId) {
+								writeLocationCookie("");
+								locationSelect.selectedIndex = -1;
+							}
+						}
+					}
+					else {
+						if (document.getElementById("queryformLocation")) {
+							writeLocationCookie(document.getElementById("queryformLocation").value);
+						}	
+					}
+				</script>
+			
+
+
+<!-- 			<script> 
+// 				function setLoginFocus() {
+// 					var userIdField = document.getElementById("body_tile:login:username");
+// 					userIdField.focus();
+// 				}
+// 				setLoginFocus();
+ 			</script> -->
+			
+			<b><span class="sessionText">Please copy the following as text when logging a QC.</span></b><br/>
+			<span class="sessionText">Server Name:    </span><span class="sessionText">WMX-UI-CLUSTER</span><span class="sessionText"> | App Version:    </span><span class="sessionText">4.0.2.44 (e71ae11310530d40a4809b68735db3e6d55d4506)</span><span class="sessionText"> | Config Version: </span><span class="sessionText"> </span><span class="sessionText"> | App Build Date: </span><span class="sessionText">2024/11/05 21:27:10</span><span class="sessionText"> | DB Server:      </span><span class="sessionText">Unknown/Unimplemented</span><span class="sessionText"> | Tran Id:        </span><span class="sessionText">5c7e7eda-d90d-4cbb-a913-e44d0205f79c</span><span class="sessionText"> | Tran Date:      </span><span class="sessionText">2024-11-07T09:35:44.044+0000</span><span class="sessionText"> | UserId:         </span><span class="sessionText">/</span><span class="sessionText"> | Host Name:      </span><span class="sessionText">wmx-bolt-qa-ui-ms1</span><input type="hidden" id="wmx_transaction_id" name="wmx_transaction_id" value="5c7e7eda-d90d-4cbb-a913-e44d0205f79c" /><input type="hidden" id="wmx_transaction_date" name="wmx_transaction_date" value="2024-11-07T09:35:44.044+0000" /> 
+		</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+body name: null 
+requested title:  null, actual title name: null 
+requested interface id:  null, interface id: null 
+onExitMethod body name: 
+If exists, action_section name: null 
+
+ServerName: qa.wmxbolt.wescodist.com
+ServerPort: 443
+RemoteHost: azlwmxbolt01q.wescodist.com
+RemoteAddr: 10.238.216.23
+Browser: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+Locale: en_US
+
+DC: null
+UserId: null
+Equipment: null
+ConfigVersion:  
+AppServer: WMX-UI-CLUSTER
+AppBuildNumber: 4.0.2.44
+AppRevision: e71ae11310530d40a4809b68735db3e6d55d4506
+AppBuildDate: 2024/11/05 21:27:10
+DBServer: Unknown/Unimplemented
+TransactionID: 5c7e7eda-d90d-4cbb-a913-e44d0205f79c 
+TransactionDate: 2024-11-07T09:35:44.044+0000 
+//-->
+
+
+

@@ -1,0 +1,37 @@
+// Ashwin Tuesday Sepetember 26th 2006 for Story ID: 4347 
+// Story: Log in screen clean up
+// Handle enter event for DC select box
+// We are handling enter event explicity here for selectBox to submit form as 
+// Form submission are implicitly handled only for html input field's.
+// So if we want a form submission on any other element other than input field in form,
+// we need to handle event explicitly in javascript
+
+function handleKeyPress(e,selectBox){
+	var key=e.keyCode || e.which;
+	// Key is 13 from enter event
+	if (key==13){
+		// Trigger click event of button
+		document.getElementById(getPrefix(selectBox.id)+'submit').click();
+	}
+}
+
+// This get's the prefix added by JSF engine
+function getPrefix(fieldName) {
+	var lastColon = fieldName.lastIndexOf(":");
+	if (lastColon == -1) {
+		return fieldName;
+	}
+	return fieldName.substring(0, lastColon)+":";               
+}
+
+// Clears all DC once page loads so prima-facie DC Combo Box has no values
+function clearDCs(selectBoxId){
+	var prefix = document.forms[0].id + ":";
+	var opt = document.getElementById(prefix+selectBoxId);
+	 // Clearing the combo Box
+	for (var i=opt.options.length-1; i>=0; i--){
+		 opt.options[i] = null;
+	}
+}
+	
+   

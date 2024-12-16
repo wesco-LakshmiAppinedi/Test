@@ -1,0 +1,77 @@
+  
+	function reportingError( e)
+	{
+		// get error message if there are some
+		var $j = jQuery.noConflict();
+		var dataString='';
+		var messages = '';
+		try{
+			if($j('#MessageArea').length)
+			{
+				var errors = $j('#MessageArea').find('li');
+		
+				var count = errors.length;
+
+				if(count !==0 )
+				{
+					var textContentProp = "innerText" in document.body ? "innerText" : "textContent";
+
+					for(var i =0; i<count; i++)
+					{
+						messages = messages + errors[i][textContentProp] +'.\n';
+					}
+					dataString = 'errors='+ messages+'&';
+				}
+			}
+		}
+		catch (e)
+		{
+			
+		}
+		dataString='wmx_transaction_id='+$j('#wmx_transaction_id').val();
+		dataString= dataString+'&wmx_transaction_date='+$j('#wmx_transaction_date').val();
+		dataString = dataString+'&requestURL='+location.pathname;
+		dataString = dataString+'&'+$j('#reportForm').serialize();
+		
+		$j.ajax({type:'POST', url: 'nonjsf/reporterror', data:dataString, success: 
+				function(response) { 
+					$j('#response').html(response); 
+				}
+				}
+			);
+		e.disabled=true;
+		return false;
+	}
+
+	function closeModalWindow(modalWrapId)
+	{
+		var mesasgeWrapBox = document.getElementById(modalWrapId);
+		mesasgeWrapBox.style.display='none'
+	}
+	
+	function openModalWindow(modalWrapId, modalBoxId, url)
+	{
+		var mesasgeWrapBox = document.getElementById(modalWrapId);
+	 	var messageBox = document.getElementById(modalBoxId);
+	 	
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function(e) {
+			if(xhr.readyState == 4 && xhr.status == 200) {
+				messageBox.innerHTML = xhr.responseText;
+				mesasgeWrapBox.style.display='inline';
+			}
+		}
+		xhr.open("GET",url, true);
+		xhr.setRequestHeader('Content-type', 'text/html');
+		xhr.send();
+		return false;
+	}
+	
+	function openClientModalWindow(modalWrapId, modalBoxId)
+	{
+		var mesasgeWrapBox = document.getElementById(modalWrapId);
+	 	var messageBox = document.getElementById(modalBoxId);
+		mesasgeWrapBox.style.display='inline';
+		return false;
+	}
+	

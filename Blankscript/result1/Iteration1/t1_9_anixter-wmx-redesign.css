@@ -1,0 +1,627 @@
+:root {
+    --primary: rgba(0, 115, 24, 1); /* rgba(33, 135, 243, 1) */
+    --primary-light: rgba(0, 115, 24, 0.8);
+    --primary-lighter: rgba(0, 115, 24, 0.1);
+    --secondary-light: rgba(0, 115, 24, 0.05);
+    --white: #ffffff;
+    --menu-height: 75px;
+    --error-msg-box: #d7f1f8;
+    --disabled-color: #CCC;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    color: #343434;
+    font: 14px 'Roboto', sans-serif;
+    -webkit-font-smoothing: subpixel-antialiased;
+    font-weight: normal;
+    -webkit-text-size-adjust: none;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+a,
+a:link,
+a:visited {
+    color: #343434;
+    font-size: 14px;
+    font-weight: normal;
+    outline: none;
+    text-decoration: none;
+}
+a:hover {
+    color: var(--primary);
+}
+
+/* Required to overcome the specificity applied in previous style sheets  */
+BODY,
+P,
+DIV,
+TR,
+TD,
+CENTER,
+TABLE,
+SELECT,
+TEXTAREA,
+INPUT {
+    font: 14px 'Roboto', sans-serif;
+}
+
+.actionbar {
+    border-color: #ebebeb !important;
+    width: 110px;
+}
+
+.actionbar th {
+    background: var(--primary) !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.actionbar td {
+    border-bottom: 1px solid #ebebeb;
+    padding: 5px 0;
+    font-size: 12px;
+}
+
+.actionbar td a:link{
+    font-size: 12px;
+}
+.actionbar a {
+    border: none;
+    color: var(--primary) !important;
+    padding: 0;
+}
+
+.actionbar .disabled {
+    color: var(--disabled-color) !important;
+}
+
+#sub-filter {
+    border-bottom: 1px solid #e4e4e4;
+}
+
+#sub-filter td {
+    padding: 10px;
+}
+
+/* Row Top Header */
+#rowTopHeader {
+    align-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    display: flex;
+    height: var(--menu-height);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+#rowTopHeader td:first-child {
+    background-color: var(--primary) !important;
+    width: 100%;
+}
+
+#rowTopHeader tr td:last-child,
+#rowTopHeader tr td.title,
+#rowTopHeader tr td.title::after {
+    padding: 0 8px 8px;
+}
+
+#rowTopHeader #userDcList select {
+    max-width: 300px;
+}
+
+#rowTopHeader #menu {
+    align-items: center;
+    display: flex;
+    height: var(--menu-height);
+    margin: auto;
+    /*padding-bottom: 24px;*/
+    position: relative;
+    width: auto;
+}
+
+#rowTopHeader #menu > *:not(:empty) {
+    padding: 0 10px;
+}
+
+#rowTopHeader,
+#rowTopHeader .title,
+#rowTopHeader a,
+#rowTopHeader a:link,
+#rowTopHeader a:visited {
+    color: #fff;
+}
+
+#rowTopHeader a:link[id='topNavForm:webLogoutLink_id'] {
+    background-color: #000000;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+/* Row Header */
+#rowHeader {
+    background: white;
+    box-shadow: 0 3px 10px #0000001a;
+    display: flex;
+    height: 30px;
+    justify-content: flex-start;
+    margin-top: var(--menu-height);
+    position: fixed;
+    width: 100%;
+    z-index: 11;
+}
+
+#rowHeader .TemplateNavArea {
+    background-image: none;
+    border: none;
+    display: flex;
+}
+
+#rowHeader .ThemeClickMainItem,
+#rowHeader .ThemeClickMainItemActive {
+    font-size: 14px;
+    font-weight: normal;
+    padding: 5px 10px 5px 10px;
+}
+
+#rowHeader .ThemeClickMainItemHover {
+    background-image: none;
+    color: #000000;
+    font-weight: normal;
+    line-height: 10px;
+    padding: 5px 10px 5px 10px;
+    white-space: nowrap;
+}
+
+#rowHeader .ThemeClickMainItemText a,
+#rowHeader .ThemeClickMainItemText a:link {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+#rowHeader .ThemeClickMainItemHover .ThemeClickMainFolderText,
+#rowHeader .ThemeClickMainItemText a:hover {
+    color: var(--primary);
+}
+
+.ThemeClickSubMenu {
+    background: #fff;
+    box-shadow: 0 3px 10px #0000001a;
+    margin-top: 5px;
+}
+
+.ThemeClickSubMenu .ThemeClickSubMenuTable {
+    background-color: #fff;
+    border: none;
+}
+
+.ThemeClickMenu,
+.ThemeClickSubMenuTable {
+    font: 14px 'Roboto', sans-serif;
+}
+
+.ThemeClickMenu,
+.ThemeClickSubMenuTable td {
+    padding: 8px 5px;
+}
+
+.ThemeClickMenuItemHover,
+.ThemeClickMenuItemActive {
+    background-color: #f3f3f3;
+}
+
+/* Row Title */
+#rowTitle {
+    background: white;
+    margin-top: calc(var(--menu-height) + 30px);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    height: 30px;
+    box-shadow: 0 3px 10px #0000001a;
+}
+
+#rowTitle table.TemplateTitleBar {
+    align-items: end;
+    background: transparent;
+    font-size: 14px;
+    height: 30px;
+    width: 300%;
+}
+
+#rowTitle table.TemplateTitleBar tbody {
+    width: 100%;
+}
+
+#rowTitle table.TemplateTitleBar .title {
+    padding-left: 15px;
+}
+
+/* Row Message */
+#rowMessage {
+    display: flex;
+    margin-top: calc(var(--menu-height) + 60px);
+    position: relative;
+    z-index: 1;
+}
+
+#rowMessage .MessageArea {
+    border: none;
+    display: flex;
+    width: 100%;
+}
+
+#rowMessage .MessageArea ul {
+    padding: 0 15px;
+    width: 100%;
+}
+
+#rowMessage .MessageArea ul li {
+    background-color: var(--error-msg-box);
+    border: 1px solid transparent;
+    border-color: var(--error-msg-box);
+    border-radius: 0.25rem;
+
+    color: #721c24;
+
+    display: flex;
+    font-size: 14px;
+    padding: 0.75rem 0.5rem;
+    position: relative;
+    text-align: left;
+    /* width: 100%; */
+}
+
+
+/* Row Content */
+#rowContent {
+    z-index: 1;
+}
+
+table {
+    width: 100%;
+}
+
+table.form,
+table.resultlist {
+    background: white;
+    border: none;
+    box-shadow: 0 5px 5px -3px #fff3, 0 8px 10px 1px #b1b1b124, 0 3px 14px 2px #0e0e0e1f;
+    margin-bottom: 1rem;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+}
+
+table.resultlist {
+    box-shadow: none;
+}
+
+table#scrollFoot {
+    box-shadow: none;
+}
+
+table.form tr th span,
+table.form tr td span,
+table.resultlist tr th span,
+table.resultlist tr td span {
+    max-width: 400px;
+    width: max-content;
+    word-wrap: break-word;
+}
+
+table.form tr td,
+table.resultlist tr td,
+table.resultlist tr th {
+    color: #000000de;
+    font-size: 14px;
+    height: 40px;
+    padding: 5px 10px;
+    vertical-align: middle;
+}
+
+table.form tr th,
+table.resultlist tr th {
+    overflow-wrap: nowrap;
+    white-space: pre-line;
+}
+
+table.form tr td:first-child,
+table.resultlist tr td:first-child,
+table.resultlist tr th:first-child {
+    padding-left: 1rem;
+}
+
+table.form tr td:last-child,
+table.resultlist tr td:last-child,
+table.resultlist tr th:last-child {
+    padding-right: 1rem;
+}
+
+table.form tr.header th,
+table.resultlist tr th {
+    color: white;
+}
+
+table.form tr.header td,
+table.resultlist tr.header td {
+    color: #0000008a;
+}
+
+table.resultlist tr th a,
+table.resultlist tr td span {
+    display: inline-flex;
+    line-height: 20px;
+}
+
+table.resultlist tr th img {
+    padding: 2px 10px;
+}
+
+table.form tr th,
+table.form tr.header,
+table.resultlist tr th,
+table.resultlist tr.header {
+    background: var(--primary-light);
+    border-left: 1px solid #e4e4e4;
+    border-right: 1px solid #e4e4e4;
+    border-top: none;
+    font-weight: bold;
+    text-align: left;
+}
+
+table.scroller {
+    width: 50%;
+}
+
+table.resultlist {
+    width: 100% !important;
+}
+
+table.resultlist tr.odd  {
+    background: var(--primary-lighter);
+    color: white;
+}
+
+table.resultlist tr.even {
+    background: var(--secondary-lighter);
+    color: white;
+}
+
+table.resultlist tr.selected td {
+    background: gray;
+    color: white;
+}
+
+table.resultlist tr.selected td {
+    background: gray;
+    color: white;
+}
+
+table.resultlist tr.odd td:first-child,
+table.resultlist tr.even td:first-child {
+    width: 32px;
+}
+table[id='body_tile:cut:panelGridCutDetails'] tr.odd td:first-child,
+table[id='body_tile:cut:panelGridCutDetails'] tr.even td:first-child {
+    width: 300px;
+}
+
+.resultlist a:visited,
+.resultlist a:hover,
+.resultlist a:active,
+.resultlist a:link,
+.resultlist a {
+    color: #0000008a;
+    font-size: inherit;
+    text-decoration: inherit;
+}
+.resultlist a:hover {
+    color: var(--primary);
+}
+
+.resultlist tr th a:visited,
+.resultlist tr th a:hover,
+.resultlist tr th a:active,
+.resultlist tr th a:link,
+.resultlist tr th a {
+    color: white;
+    font-size: smaller;
+}
+
+#rowContent tr#rowFooter {
+    align-items: center;
+    background: white;
+    bottom: 0;
+    box-shadow: 0 3px 10px #0000001a;
+    display: flex;
+    height: 50px;
+    justify-content: flex-end;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+#rowContent tr#rowFooter td {
+    padding: 10px;
+}
+
+#rowContent .searchclass {
+    background: none;
+    border: none;
+    display: flex;
+}
+#rowContent .searchclass .searchgroupclass {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-right: 20px;
+}
+#rowContent .searchclass .searchgroupclass .searchitemclass {
+    background: none;
+    margin: 0.1rem;
+    /*margin-bottom: 0.5rem;*/
+    width: auto;
+}
+
+#rowContent .searchitemclass tr td:first-child {
+    padding: 0 10px;
+    width: auto;
+}
+
+table.searchclass .basicCriteria .searchitemclass {
+    background: var(--primary-lighter)
+}
+table.queryParameters .criteriapanel {
+    background: var(--primary-lighter);
+    padding: 10px;
+}
+table.queryParameters .center {
+    background: var(--primary-lighter);
+    padding: 10px;
+}
+table.queryParameters .usingBasic {
+    background: var(--primary-lighter);
+    border: none;
+    padding: 10px;
+}
+
+.basicCriteria {
+    background: transparent !important;
+}
+
+.basicCriteriaContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+/* TABLE */
+table {
+    border-collapse: collapse;
+}
+table tr td,
+table tr th {
+    font-size: 14px;
+}
+
+/* FORM */
+select,
+input,
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #343434;
+    font-size: 14px;
+    padding: 5px;
+}
+
+*:focus {
+    box-shadow: none;
+    outline: 1px solid #67afd6;
+}
+
+input[type='button'],
+input[type='submit'] {
+    background-color: var(--primary);
+    border-radius: 2px;
+    border-width: 0;
+    box-shadow: 0 1px 4px rgb(143 143 143 / 60%);
+    color: #ecf0f1;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    padding: 6px 10px;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+table.resultlist input[type='button'],
+table.resultlist input[type='submit'],
+table.form input[type='button'],
+table.form input[type='submit'] {
+    background-color: var(--primary);
+    border-radius: 2px;
+    margin-left: 4px;
+    padding: 6px 10px;
+}
+
+input[type='button']:hover,
+input[type='button']:focus,
+input[type='submit']:hover,
+input[type='submit']:focus {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+input[type='button'] > *,
+input[type='submit'] > * {
+    position: relative;
+}
+
+input[type='button'] span,
+input[type='submit'] span {
+    display: block;
+    padding: 12px 24px;
+}
+
+input[type='button']:before,
+input[type='submit']:before {
+    background-color: rgba(236, 240, 241, 0.3);
+    border-radius: 100%;
+    content: '';
+    display: block;
+    left: 50%;
+    padding-top: 0;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 0;
+}
+
+input[type='button']:active:before,
+input[type='submit']:active:before {
+    padding-top: 120%;
+    transition: width 0.2s ease-out, padding-top 0.2s ease-out;
+    width: 120%;
+}
+.scrolling_outer {
+    width: calc(100vw - 201px) !important;
+}
+
+#ProgressBox .drag-handle{
+    background: var(--primary-light)
+}
+
+#queryformLocation {
+    min-width: 150px;
+}
+
+/* Specific fix for the config log search to make the column wider */
+tbody#body_tile\:tranLog\:locations\:tbody_element TR TD TABLE TBODY TR TD SPAN {
+    max-width: 80vw;
+    font-size: smaller;
+}
+
+tbody#body_tile\:tranLog\:locations\:tbody_element TR TD TABLE TBODY TR TD {
+    padding: 0;
+    height: fit-content;
+}
+    
+	

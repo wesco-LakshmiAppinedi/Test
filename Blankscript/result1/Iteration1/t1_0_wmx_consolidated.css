@@ -1,0 +1,1381 @@
+/* WMX wmx.css Style Sheet*/
+
+/* Start Generic styles */
+
+/* Body tag */
+BODY {
+	background-color: #FFFFFF;
+	margin: 0 5px 0 5px;
+}
+
+BODY,P,DIV,TR,TD,CENTER,TABLE{
+    font: 8pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+SELECT,TEXTAREA, INPUT{
+    font: 7pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+/* Header Tags */
+H1 {
+	font-size: 14pt;
+	font-weight: bold;
+	color: #336699;
+}
+
+HR	{
+	border : 1pt solid #CCCCCC;
+}
+
+/* Anchor tags */
+A,A:link,A:visited {
+	font-size: 8pt;
+	color: #6732BA;
+	text-decoration: underline;
+}
+
+A:hover {
+	color: #6732BA;
+	font-size: 8pt;
+	text-decoration: underline;
+}
+
+/* Form Tag */
+FORM {
+    margin: 0px;
+}
+
+TABLE{
+	empty-cells: show;
+}
+
+/* end of generic styles */
+
+/* input text box size */
+input.tinysize {
+	width: 6ex
+}
+
+input.smallsize {
+	width: 12ex
+}
+
+input.mediumsize {
+	width: 24ex
+}
+
+input.largesize {
+	width: 40ex
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+
+/* generic custom styles */
+
+.requiredAsterisk {
+	color: red;
+}
+
+.hide {
+	visibility: hidden;
+	display: none;
+}
+
+/* use initHide as a safety to hide elements during page initialization */
+.initHide {
+	visibility: hidden;
+	display: none;
+}
+
+/* rounded boxes */
+.box			{ margin-bottom: 8px; }
+.box .tl		{ background: url(../image/corner_tl_white.gif) no-repeat top left; }
+.box .tr		{ background: url(../image/corner_tr_white.gif) no-repeat top right; }
+.box .bl		{ background: url(../image/corner_bl_white.gif) no-repeat bottom left; }
+.box .br		{ background: url(../image/corner_br_white.gif) no-repeat bottom right; }
+.box .body		{ text-align: left; padding: 8px; }
+.box .body .hd	{ margin: 0px 0px 8px 0px; padding-top: 8px; padding-bottom: 8px; font-size: 100%; font-weight: bold; border-bottom: 1px solid; }
+.box .body td 	{ background-color: transparent; }
+.box .body h2	{ font-size: 100%; color: #191919; font-weight: bold; padding: 5px 10px; border-bottom: 1px solid #d0d0d0; }
+
+.blue			{ background-color: #8C8EF2; }
+
+.gray			{ background-color: #f0f0f0; }
+.gray input,
+.gray textarea,
+.gray select 	{ border-color: #d0d0d0; }
+.gray a			{ color: #414141; text-decoration: none; font-weight: bold; }
+.gray a:hover	{ color: #216bad; text-decoration: underline; }
+
+
+
+/* these are generic styles that can be used in the WEB UI */
+	/* for error message */
+.error {
+	color: #FF0000;
+	font-size: 11pt;
+	text-align: left;
+	white-space: normal;
+}
+
+.error10 {
+    color: #FF0000;
+    font-size: 11pt;
+    text-align: left;
+    white-space: normal;
+    width: 15%;
+}
+
+.info {
+	color: blue;
+	font-size: 12px;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: left;
+	white-space: normal;
+}
+
+.info_11pt {
+	color: blue;
+	font-size: 11pt;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: left;
+	white-space: normal;
+}
+
+.errorOption {
+	background-color: #FF0000;
+	color: white;
+}
+
+.footer {
+	color: #FFFFFF;
+	background-color: lavender;
+	font-family: Arial;
+	font-size: 8pt;
+	padding: 0px;
+	font-family: Arial;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.title {
+	font-weight: bold;
+	font-size: 10pt;
+	color: #9A0000;
+}
+
+.titleBox1 {
+	font-weight: bold;
+	font-size: 10pt;
+	background: #dddddd;
+	color: black;
+}
+
+.loginTitle {
+	background-color: #FFFFFF;
+	padding: 10;
+	text-align: center;
+	font-size: 8pt;
+	padding: 10px;
+}
+
+/* TODO: This doesn't work in IE7 */
+.preFormatted {
+	white-space: pre;
+}
+
+/* scroll panel for xml gateway */
+.scrollpane_870_100 {
+	width: 870px;
+	height: 100px;
+	overflow: auto;
+	border: 0px;
+}
+
+/* section for template */ /* styles for footer */
+.MessageArea {
+	background-color: #FFFFFF;
+	border: solid #6732BA;
+	border-width: 1px 0 0px 0;
+	text-align: left;
+	font-size: 8pt;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.TemplateContentArea {
+	background-color: #FFFFFF;
+	text-align: left; /* remove this line to align content in middle*/
+	font-size: 8pt;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.TemplateFooterArea,.TemplateFooterArea:link,.TemplateFooterArea:active,.TemplateFooterArea:visited
+	{
+	font-family: Arial;
+	color: #767A7D;
+	font-weight: normal;
+	vertical-align: middle;
+	border-top: 1px solid #6732BA;
+	font-size: 8pt;
+}
+
+.TemplateFooterArea:hover {
+	color: #003073;
+}
+
+.TemplateTitleBar {
+	font-size: 9pt;
+	color: #000000;
+	background: #D9CCEE;
+	width: 100%;
+}
+
+.TemplateTitleBar .title {
+	color: black;
+	font-weight: bold;
+	padding-left: 3px;
+	text-align: left;
+}
+
+.TemplateTitleBar .message {
+	color: black;
+	font-weight: normal;
+	white-space: normal;
+	padding-left: 3px;
+	text-align: left;
+}
+
+.TemplateNavArea {
+	border: 1px solid #8C8C94;
+	background-image: url(NavAreaBG.gif);
+	background-repeat: repeat-x;
+	padding: 1px 4px 1px 4px;
+	white-space: nowrap;
+}
+
+.TemplateMenuBanner {
+	
+}
+
+.TemplateMenuBanner td {
+	padding-left: 8px;
+	padding-right: 8px;
+	text-align: center;
+}
+
+.TemplateMenuBanner .tabsInner {
+	border-left: 1px solid #A0A0A0;
+}
+
+/* end template */
+.collapsingHeader {
+	width: 100%;
+}
+
+.collapsingHeader .button {
+	text-align: left;
+	padding: 0px;
+	width: 5%;
+}
+
+.collapsingHeader .headerTitle {
+	color: white;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: center;
+	width: 95%;
+	padding: 0px;
+}
+
+.resultlist .headerTitle {
+	color: white;
+	font-weight: bold;
+	font-size: 8pt;
+	text-align: center;
+	width: 95%;
+	padding: 0px;
+}
+
+/* styls is used as a style for a table that vertical aligns top */
+.tableFrame {
+	
+}
+
+.tableFrame td {
+	vertical-align: top;
+}
+
+.commandlist {
+	background: #DBDBDB;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	padding: 1px;
+	text-align: left;
+}
+
+.commandheader {
+	color: white;
+	background: #8D65CB;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	width: 100%;
+}
+
+/* start form */
+.form {
+	background: #DBDBDB;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	padding: 1px;
+	text-align: left;
+	/* width: 100%; */
+}
+
+.form table {
+	padding: 1px;
+}
+
+.form th,.header {
+	color: white;
+	background: #8D65CB;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	text-align: center;
+}
+
+.form th,.hidden {
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    border-right: 0px;
+}
+
+.form td {
+	font-size: 10pt;
+	padding: 1px;
+	vertical-align: top;
+}
+
+.form .label {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	white-space: nowrap;
+    vertical-align: middle;	
+}
+
+.form .labelleft10 {
+    text-align: right;
+    font-size: 10pt;
+    font-weight: normal;
+    padding: 2px;
+    white-space: nowrap;
+    width: 10%;
+    vertical-align: middle;
+}
+
+.form .labeltop {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	white-space: nowrap;
+    vertical-align: top;
+}
+
+.form .labelattribute {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	/* color: #FF33FF */
+    vertical-align: middle;	
+}
+
+.form .labelcollection {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	/* color: #660033 */
+    vertical-align: middle;	
+}
+
+.form .labelcomponent {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	/* color: #00CCCC */
+    vertical-align: middle;	
+}
+
+.form .labelentity {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 2px;
+	/* color: #FF9933 */
+    vertical-align: middle;	
+}
+
+.form .labelrequired {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 2px;
+    vertical-align: middle;	
+}
+
+.form .data {
+	font-size: 10pt;
+	font-weight: normal;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.form .data10 {
+    font-size: 10pt;
+    font-weight: normal;
+    text-align: left;
+    vertical-align: middle;
+    width: 15%;
+}
+
+.form .streamleft {
+    width: 30%;
+}
+
+.form .streamright {
+    width: 70%;
+}
+
+.form .odd {
+    background: #F8F8FF
+}
+
+.form .even {
+    background: #DBDBDB
+}
+
+.form .full {
+    height:100%	
+}
+
+.form .title {
+	background: #016FC9;
+	color: white;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+}
+
+.form .footer {
+	text-align: center;
+	background: #DBDBDB;
+}
+
+.form .example {
+	font-size: 8pt;
+	font-style: italic;
+	color: #808080;
+}
+
+.form .greyedout {
+    color: #999999;
+}
+
+.form .normal {
+}
+
+/* end form */ /* start result list */
+.resultlist,.childcollectionpanels,.childcollectionpanel,.childbuttonpanel,.childpanel, .headerTable
+	{
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	cursor: pointer;
+	width: 100%;
+}
+
+.resultlist a:visited,.resultlist a:hover,.resultlist a:active,.resultlist a:link,.resultlist a
+	{
+	font-size: 8pt;
+	color: #6732BA;
+	text-decoration: none;
+}
+
+.resultlist .subResultList {
+	display: inline-table;
+	width: 90%;
+}
+
+.childcollectionpanels {
+	background: #DBDBDB;
+}
+
+.childcollectionpanel {
+	width: 100%;
+}
+
+.childbuttonpanel {
+	empty-cells: show;
+}
+
+.childpanel {
+	width: 100%;
+	border: 1px solid black;
+	padding: 0px;
+	padding-left: 3px;
+}
+
+.childpanel th {
+	color: white;
+	background: #8D65CB;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	text-align: center;
+}
+
+.childpanel td {
+	border-left: 1px solid BLACK;
+}
+
+.resultlist th {
+	background: #C2C2C2;
+	font-size: 8pt;
+	color: black;
+	font-weight: 600;
+	border: 1px solid white;
+}
+
+.resultlist td {
+	vertical-align: middle;
+	border: 1px solid white;
+}
+
+.resultlist .odd {
+	background: #F8F8FF
+}
+
+.resultlist .even {
+	background: lavender
+}
+
+.resultlist .title {
+	background: #C2C2C2;
+}
+
+.resultlist .error {
+    color: #FF0000;
+    font-size: 8pt;
+}
+
+.resultlist .info {
+    color: blue;
+    font-size: 8pt;
+}
+
+.resultlist .selected {
+	color: white;
+	background: #6B6D6B;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+}
+
+/* end result list */ /* start tree table */
+.treeTable {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.treeTable th {
+	padding-left: 3px;
+	padding-right: 3px;
+	border-left: 2px solid white;
+}
+
+.treeTable .treeHeader {
+	background: #C2C2C2;
+}
+
+.treeTable .odd {
+	background: #F8F8FF
+}
+
+.treeTable .even {
+	background: lavender
+}
+
+.treeTable .columns {
+	vertical-align: middle;
+	border-left: 2px solid white;
+}
+
+/* end tree table */ /* start tree */
+.tree {
+	background: white;
+	border: 0px;
+	padding: 0px;
+}
+
+.tree table {
+	border: 0px;
+	padding: 0px;
+}
+
+.tree td {
+	font-size: 8pt;
+	border: 0px;
+	padding: 0px;
+}
+
+.searchclass {
+	border: 1px solid #8C8C94;
+	background: #dddddd;
+}
+
+/* end tree */
+.split {
+	
+}
+
+.split td {
+	vertical-align: top;
+}
+
+.workInstruction {
+	border: 1px solid #DCDCDC;
+}
+
+.workInstruction th {
+	background: plum
+}
+
+.workInstruction .odd {
+	background: lavender
+}
+
+.workInstruction .even {
+	background: #F8F8FF
+}
+
+.workInstruction .disable, .disable {
+	color: graytext;
+}
+
+.workInstruction A,.workInstruction A:link,.workInstruction A:visited,.workInstruction A:hover
+	{
+	text-decoration: none;
+	color: black;
+	display: block;
+
+}
+
+.subtable{
+	width: 100%;
+	border: 0px;
+}
+
+.subtable th {
+	color: white;
+	font-weight: bolder;
+	font-size: 10pt;
+	border: 0px;
+	text-align: center;
+}
+
+.subtable td {
+	font-weight: bold;
+	font-size: 8pt;
+	border: 0px;
+}div.suggestions {
+	-moz-box-sizing: border-box;
+	/*box-sizing: border-box;*/
+	border: 1px solid black;
+	position: absolute;
+}
+
+div.suggestions div {
+	cursor: default;
+	padding: 0px 3px;
+	background: #ffffee;
+}
+
+div.suggestions div.current {
+	background-color: #3366cc;
+	color: white;
+}
+
+.popupItem {
+	background: #ffffee;
+	color: #000000;
+	text-decoration: none;
+	display: block;
+	padding: 1px;
+}
+
+.popupItem:hover {
+	background: #7a8aff;
+	color: #fffafa;
+}
+
+.popupFrameWrapper {
+	background: transparent;
+	border: none;
+	display: block;
+	text-align: center;
+}
+.popupFrame {
+	background: #ffffee;
+	border: none;
+	padding: 3px;
+	overflow: visible;
+	text-align: left;
+	display: inline-block;
+	position: relative;
+}
+
+ #popupClose {
+        position : absolute;
+        top:-20px; 
+        right:-20px;
+        z-index:50;
+ }
+
+
+.mouseOut {
+	background: #7A8AFF;
+	color: #FFFAFA;
+}
+
+.mouseOver {
+	background: #FFFAFA;
+	color: #000000;
+}.dhtmlwindow{
+position: absolute;
+border-top: 3px solid GAINSBORO;
+border-left: 3px solid GAINSBORO;
+border-bottom: 3px solid BLACK;
+border-right: 3px solid BLACK; 
+visibility: hidden;
+background-color: white;
+}
+
+.drag-handle{ /*CSS for Drag Handle*/
+padding: 1px;
+text-indent: 3px;
+font: bold 9px Arial;
+background-color: #D9CCEE;
+color: white;
+cursor: move;
+overflow: hidden;
+width: auto;
+-moz-opacity: 1;
+opacity: 1;
+height: 15px;
+}
+
+.drag-handle .drag-controls{ /*CSS for controls (min, close etc) within Drag Handle*/
+position: absolute;
+right: 1px;
+top: 2px;
+cursor: pointer;
+}
+
+* html .drag-handle{ /*IE6 and below CSS hack. Width must be set to 100% in order for opaque title bar to render*/
+width: 100%;
+}
+
+
+.drag-contentarea{ /*CSS for Content Display Area div*/
+border-top: 1px solid brown;
+background-color: white;
+color: black;
+height: 150px;
+padding: 2px;
+overflow: auto;
+}
+
+.drag-statusarea{ /*CSS for Status Bar div (includes resizearea)*/
+border-top: 1px solid gray;
+background-color: #F8F8F8;
+height: 13px; /*height of resize image*/
+}
+
+
+.drag-resizearea{ /*CSS for Resize Area itself*/
+float: right;
+width: 13px; /*width of resize image*/
+height: 13px; /*height of resize image*/
+cursor: nw-resize;
+font-size: 0;
+}/* ThemeClickMenu Style Sheet */
+
+.ThemeClickMain
+{
+    padding:    0;
+}
+
+/** used to hide the hyperlink underline **/
+.ThemeClickMenuItemText A,.ThemeClickMenuItemText A:link,.ThemeClickMenuItemText A:visited,.ThemeClickMenuItemText A:hover,
+.ThemeClickMainItemText A,.ThemeClickMainItemText A:link,.ThemeClickMainItemText A:visited,.ThemeClickMainItemText A:hover {
+	text-decoration: none;
+	color:#000000;
+	display: block;
+}
+
+.ThemeClickMenu,.ThemeClickSubMenuTable
+{
+    cursor:     default;
+    font:8pt Verdana, Geneva, Arial, Helvetica, sans-serif;
+    padding:    0;
+    border:     0;
+    white-space:    nowrap;
+}
+
+/*
+.ThemeClickMenu
+{
+    background-color:   #F7F3EF;
+}
+*/
+.ThemeClickSubMenu
+{
+    position:   absolute;
+    visibility: hidden;
+
+    /*
+       Netscape/Mozilla renders borders by increasing
+       their z-index.  The following line is necessary
+       to cover any borders underneath
+    */
+    z-index:    100;
+    border:     0;
+    padding:    0;
+
+    /* firefox does not like */
+    /*
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#848A84, Direction=135, Strength=4);
+    */
+}
+
+.ThemeClickSubMenuTable
+{
+    border:     1px solid #999999;
+    background-color:   #F1F1F1;
+}
+
+.ThemeClickSubMenuTable td
+{
+    white-space:    nowrap;
+}
+
+
+
+.ThemeClickMainItem,.ThemeClickMainItemActive
+{
+    border-right:1px solid #8C8C94;
+    color:#000000; 
+    font-weight:bold;
+    line-height:10px;
+    padding:2px 8px 4px 8px;
+    white-space:    nowrap;
+}
+
+.ThemeClickMainItemHover
+{
+        background-image:url(NavAreaBGOn.gif);
+        background-repeat:repeat-x;
+        border-right:1px solid #8C8C94;
+        color:#000000; 
+        font-weight:bold; 
+        line-height:10px; 
+        padding:2px 8px 4px 8px;
+        white-space:    nowrap;
+}
+
+.ThemeClickMenuItem,.ThemeClickMenuItemHover,.ThemeClickMenuItemActive
+{
+    padding-left:   3px;
+    padding-right:  3px;
+    padding-top:    2px;
+    padding-bottom: 2px;
+    white-space:    nowrap;
+}
+
+/*
+.ThemeClickMainItemHover,.ThemeClickMainItemActive,
+.ThemeClickMenuItemHover,.ThemeClickMenuItemActive
+{
+    color:      white;
+    background-color:   #3169C6;
+}
+*/
+
+.ThemeClickMenuItemHover,.ThemeClickMenuItemActive
+{
+    background-color:   #D9CCEE
+}
+
+.ThemeClickMenuSplit
+{
+    height:     1px;
+    margin-top: 1px;
+    margin-bottom:  1px;
+    overflow:   hidden;
+    background-color:   inherit;
+    border-top: 1px solid #ADAA9C;
+}
+
+.ThemeClickMenuVSplit
+{
+    width:      1px;
+    margin:     0px;
+    overflow:   hidden;
+    background-color:   inherit;
+    border-right:   1px solid #ADAA9C;
+}
+
+/* image shadow animation */
+
+/*
+    seq1:   image for normal
+    seq2:   image for hover and active
+
+    To use, in the icon field, input the following:
+    <img class="seq1" src="normal.gif" /><img class="seq2" src="hover.gif" />
+*/
+
+.ThemeClickMenuItem img.seq1
+{
+    display:    inline;
+}
+
+.ThemeClickMenuItemHover seq2,
+.ThemeClickMenuItemActive seq2
+{
+    display:    inline;
+}
+
+.ThemeClickMenuItem .seq2,
+.ThemeClickMenuItemHover .seq1,
+.ThemeClickMenuItemActive .seq1
+{
+    display:    none;
+}
+.dcMessage{
+	color: blue;
+	font-size: 10pt;
+	visibility: hidden;
+	text-align: center;
+}
+
+table.twoColumnGrid td { 
+	width: 50%;
+}
+
+
+.confirmPrompt {
+	font-size: 14px;
+	font-family: Verdana, Geneva, sans-serif;
+	text-align: center;
+	display: block
+	
+}
+
+#container{
+float:left;
+width: 100%;
+border: 1px solid #8C8C94;
+background: #DDD;
+}
+
+.table_float{
+background: #DDD;
+height: 25px;
+float:left;
+white-space: nowrap;
+font-size: 8pt;
+padding: 0px 0px 0px 0px;
+vertical-align: middle;
+}
+
+.resultlist .tableLabel {
+	font-weight: bold;
+	text-align: right;
+	vertical-align: top;
+}
+
+.threeButtonGrid {
+	width: 100%;
+}
+
+.threeButtonGrid  td:first-child{
+	text-align: left;
+}
+
+.threeButtonGrid  td:nth-child(2){
+	text-align: center;
+}
+
+.threeButtonGrid  td:last-child{
+	text-align: right;
+}
+
+.sessionText{
+	color: #ffffff;
+}
+
+tfoot tr td {
+	text-align:right;
+}
+
+tfoot tr td:last-child {
+	text-align:left;
+}
+
+.tableFoot {
+	color: black;
+    font-size: 8pt;
+    font-weight: 600;
+    padding-top:0px;
+	padding-right:5px;
+	padding-bottom:0px;
+	padding-left:5px;
+}
+
+.remainingQuantityCounter {
+	color:blue;
+}
+
+.remainingQuantityCounterError{
+	color:red;
+}
+.panelGridColumn{
+}
+
+.titlePurple {
+	font-weight: bold;
+	font-size: 10pt;
+	color: #9933CC;
+}
+
+
+
+.vaComponentWI-panelGridColumn{
+	width: 50%;
+}
+
+.vaComponentInventory-panelGridColumn{
+	width: 50%;
+
+}
+.vaComponent-panelGrid{
+	extends: form;
+	background: lavender;
+	width:100%;
+}
+
+.vaComponentInventory-panelGrid{
+	extends: form;
+	background: #F8F8FF;
+	margin-left:auto;
+	margin-right:0%;
+	width: 100%;
+}
+
+.va-workInstruction {
+	extends: workInstruction;
+	text-wrap: suppress;
+	width: 80%;
+}
+
+.va-workInstruction th {
+	background: plum
+}
+
+.va-workInstruction .odd {
+	background: lavender
+}
+
+.va-workInstruction .even {
+	background: #F8F8FF
+}
+
+.va-workInstruction .disable, .disable {
+	color: graytext;
+}
+
+.va-workInstruction A,.va-workInstruction A:link,.va-workInstruction A:visited,.va-workInstruction A:hover
+	{
+	text-decoration: none;
+	color: black;
+	display: block;
+
+}
+
+.vaComponentInventory-header{
+	background: #af93da;
+	color: white;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;
+	text-align: center;
+
+}
+
+.vaStage-panelGridColumn{
+	extends: panelGridColumn;
+	width: 5%;
+}
+.vaProductId-panelGridColumn{
+	extends: panelGridColumn;
+	white-space:    nowrap;
+	width:28px;
+}
+.vaPrdDesc-panelGridColumn{
+	extends: panelGridColumn;
+	width: 20%;
+}
+.vaHazmat-panelGridColumn{
+	extends: panelGridColumn;
+	width: 5%;
+}
+.vaMsds-panelGridColumn{
+	extends: panelGridColumn;
+	width: 5%;
+}
+.vaSetUpQty-panelGridColumn{
+	extends: panelGridColumn;
+	width: 10%;
+}
+.vaWstgFctr-panelGridColumn{
+	extends: panelGridColumn;
+	width: 7%;
+}
+.vaFxtQty-panelGridColumn{
+	extends: panelGridColumn;
+	width: 10%;
+}
+.vaQtyPerFG-panelGridColumn{
+	extends: panelGridColumn;
+	width: 10%;
+}
+
+/**/
+
+.vaLP-panelGridColumn{
+	extends: panelGridColumn;
+}
+
+.vaRefId-panelGridColumn{
+	extends: panelGridColumn;
+}
+
+.vaUOM-panelGridColumn{
+	extends: panelGridColumn;
+}
+
+.vaAvlQty-panelGridColumn{
+	extends: panelGridColumn;
+	text-align: left;
+
+}
+
+.vaQtyUsed-panelGridColumn{
+	extends: panelGridColumn;
+	text-align: left;
+
+}
+
+
+/* BEGIN - Column Styles - Need to escape periods:  productMaster.productId is productMaster\.productId */
+.resultlist .wmx_column_productMaster\.productId {
+	white-space:    nowrap;
+}
+
+.overlay {
+    /* Display it on the layer with index 1001.
+       Make sure this is the highest z-index value
+       used by layers on that page */
+    z-index:1001;
+     
+    /* make it cover the whole screen */
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+ 
+    /* make it white but fully transparent */
+    background-color: gray;
+    opacity:.50;
+    filter: alpha(opacity=50);
+
+}
+
+/* END - Column Styles */
+
+
+/* Scrolling Table on Queryforms */
+.scrolling_inner {
+	overflow-x: hidden;
+	overflow-y: auto;
+	height: 100px;
+
+}
+
+FIX TH text-align.
+.scrolling_outer th, .scrolling_outer td {
+	text-align:left;
+}
+
+/* Modal Div */
+
+.modalBoxWrap { /* The div that shows/hides. */
+    display:none; /* starts out hidden */
+    z-index:40001; /* High z-index to ensure it appears above all content */
+}
+.modalBoxOverlay { /* Shades out background when selector is active */
+    position:fixed;
+	left: 0;
+	top: 0;
+    width:100%;
+    height:100%;
+    background-color:black;
+    opacity:.5; /* Sets opacity so it's partly transparent */
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; /* IE transparency */
+    filter:alpha(opacity=50); /* More IE transparency */
+    z-index:40001;
+}
+.vertical-offset { /* Fixed position to provide the vertical offset */
+    position:fixed;
+    top:10%;
+    width:100%;
+    z-index:40002; /* ensures box appears above overlay */
+}
+.modalBox { /* The actual box, centered in the screen */
+    width:90%; /* Whatever width you want the box to be */
+	height: 90%;
+	position: fixed;
+    top: 5%;
+    left: 4%;
+    margin:0 auto;
+    z-index:40002;
+    /* Everything below is just visual styling */
+    background-color:white;
+    padding:10px;
+    border:1px solid black;
+ }
+.modalBoxScrollableViewport {
+	width:99%;
+	height: 100%;
+    top: 0%;
+    left: 0%;
+    margin:0 auto;
+	overflow:auto;
+	display:inline-block;
+}
+
+ #closeModal {
+        position:absolute;
+        top:-12px; /* Half the icon's height */
+        right:-12px; /* half the icon's width */
+        z-index:50;
+ }
+ 
+.packCloseContainer {
+	vertical-align: top;
+}
+
+ input[readonly]
+ {
+ 	 /*background-color:#C0C0C0;*/
+ 	 background-color:white;
+ } 
+ input[disabled]
+ {
+ 	 color:#8c8c94;
+ } 
+
+ .center 
+ {
+ 	text-align:center;
+ }
+ .centerColumn
+ {
+    width: 60%;
+    text-align: right;
+	margin: 0 auto;
+ }
+ 
+ /* venProdFormatted should only be used to format the Vendor Product ID on WebUI detail screens. */
+ /* This way we can change the format for only this field on all the screens by changing only this class */
+ .venProdFormatted
+ {
+ 	white-space: pre;
+ }
+ 
+  /* venProdFormattedQF should only be used to format the Vendor Product ID on WebUI Query Forms. */
+ /* This way we can change the format for only this field on all the Query Form screens by changing only this class */
+  .venProdFormattedQF
+ {
+ 	white-space: pre;
+ }
+ 
+ .ulCsaOverride
+ {
+ 	color: white;
+	background: #8D65CB;
+	font-weight: bold;
+	font-size: 10pt;
+	text-align: left;
+	border-top: 1px solid GAINSBORO;
+	border-left: 1px solid GAINSBORO;
+	border-bottom: 1px solid BLACK;
+	border-right: 1px solid BLACK;	
+ }

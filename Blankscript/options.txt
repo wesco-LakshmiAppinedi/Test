@@ -1,0 +1,9 @@
+-+
+-DCCI
+-D_IDA_XL
+-DWINNT
+-IC:\PERF\PT_APP_LIST\WMX\WMX_ALLDCs\G4\Blankscript
+-IC:\Program Files (x86)\Micro Focus\Virtual User Generator\include
+-ec:\perf\pt_app_list\wmx\wmx_alldcs\g4\blankscript\\logfile.log
+c:\perf\pt_app_list\wmx\wmx_alldcs\g4\blankscript\\combined_Blankscript.c
+c:\perf\pt_app_list\wmx\wmx_alldcs\g4\blankscript\\pre_cci.c

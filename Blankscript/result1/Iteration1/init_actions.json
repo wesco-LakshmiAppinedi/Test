@@ -1,0 +1,41 @@
+[
+    {
+        "actionName": "vuser_init",
+        "steps": [
+            {
+                "stepId": "STEP1",
+                "stepName": "Url: wmx",
+                "infFile": "t1.inf",
+                "time": 1730972144657
+            },
+            {
+                "stepId": "STEP2",
+                "stepName": "Submit Data: login.faces",
+                "infFile": "t2.inf",
+                "time": 1730972145721
+            },
+            {
+                "stepId": "STEP3",
+                "stepName": "Submit Data: login.faces_2",
+                "infFile": "t3.inf",
+                "time": 1730972146037
+            }
+        ],
+        "transactions": [
+            {
+                "transactionName": "T01_Homepage",
+                "rawStartTime": 1730972144233,
+                "rawEndTime": 1730972144658,
+                "thinkTime": 0.0,
+                "wastedTime": 0.11379766464233399
+            },
+            {
+                "transactionName": "T02_Login",
+                "rawStartTime": 1730972145659,
+                "rawEndTime": 1730972146037,
+                "thinkTime": 0.0,
+                "wastedTime": 0.033677101135253909
+            }
+        ]
+    }
+]

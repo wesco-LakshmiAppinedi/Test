@@ -1,0 +1,322 @@
+/*!
+ * jQuery Plugin: Are-You-Sure (Dirty Form Detection)
+ * https://github.com/codedance/jquery.AreYouSure/
+ *
+ * Copyright (c) 2012-2014, Chris Dance and PaperCut Software http://www.papercut.com/
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * Author:  chris.dance@papercut.com
+ * Version: 1.9.0
+ * Date:    13th August 2014
+ *
+ *  WMX USAGE EXAMPLE (this example differs slightly from the usage in the are-you-sure plugin documentation. See the documentation
+ *                     near the end of the program for an explanation):
+ *  
+ * 	jQuery( document ).ready(function() {
+ *      jQuery("[id='body_tile:metaEditParent']").areYouSure( {'subFormSelector':'table.ruSureCheck input, select, textarea'} );
+ *  });
+ *  
+ *  ADVANCED USAGE
+ *  
+ *  Make Are-You-Sure "silent" by disabling the warning message 
+ *  (tracking/monitoring only mode). This option is useful when you wish to 
+ *  use the dirty/save events and/or use the dirtyness tracking in your own 
+ *  beforeunload handler.
+ *
+ *  $('form').areYouSure( {'silent':true} );
+ *  
+ *  Dirtyness Change Events
+ *  
+ *  Are-You-Sure fires off "dirty" and "clean" events when the form's state
+ *  changes. You can bind() or on(), these events to implement your own form
+ *  state logic.  A good example is enabling/disabling a Save button.
+ *
+ *  "this" refers to the form that fired the event.
+ *
+ *   $('form').on('dirty.areYouSure', function() {
+ *     // Enable save button only as the form is dirty.
+ *     $(this).find('input[type="submit"]').removeAttr('disabled');
+ *   });
+ *   $('form').on('clean.areYouSure', function() {
+ *     // Form is clean so nothing to save - disable the save button.
+ *     $(this).find('input[type="submit"]').attr('disabled', 'disabled');
+ *   });
+ *   
+ *  It's easy to test if a form is dirty in your own code - just check
+ *  to see if it has a "dirty" CSS class.
+ *
+ *   if ($('#my-form').hasClass('dirty')) {
+ *       // Do something
+ *   }
+ *
+ *  If you're dynamically adding new fields/inputs, and would like to track 
+ *  their state, trigger Are-You-Sure to rescan the form like this:
+ *
+ *   $('#my-form').trigger('rescan.areYouSure');
+ *
+ *  If you'd like to reset/reinitialize the form's state as clean and 
+ *  start tracking again from this new point onwards, trigger the
+ *  reinitialize as follows. This is handy if say you've managing your
+ *  own form save/submit via asyc AJAX.
+ *
+ *   $('#my-form').trigger('reinitialize.areYouSure');
+ *
+ *  In some situations it may be desirable to look for other form
+ *  changes such as adding/removing fields. This is useful for forms that
+ *  can change their field count, such as address/phone contact forms.
+ *  Form example, you might remove a phone number from a contact form
+ *  but update nothing else. This should mark the form as dirty.
+ *
+ *   $('form').areYouSure( {'addRemoveFieldsMarksDirty':true} );
+ *
+ *  Sometimes you may have advanced forms that change their state via
+ *  custom JavaScript or 3rd-party component JavaScript. Are-You-Sure may 
+ *  not automatically detect these state changes. Examples include:
+ *     - Updating a hidden input field via background JS.
+ *     - Using a [rich WYSIWYG edit control](https://github.com/codedance/jquery.AreYouSure/issues/17).
+ *  One solution is to manually trigger a form check as follows:
+ *
+ *   $('#my-form').trigger('checkform.areYouSure');
+ *
+ *  As an alternative to using events, you can pass in a custom change 
+ *  function.
+ *
+ *  $('#my-adv-form').areYouSure({
+ *       change: function() {
+ *             // Enable save button only if the form is dirty. i.e. something to save.
+ *             if ($(this).hasClass('dirty')) {
+ *               $(this).find('input[type="submit"]').removeAttr('disabled');
+ *             } else {
+ *               $(this).find('input[type="submit"]').attr('disabled', 'disabled');
+ *             }
+ *           }
+ *  });
+ *
+ *  Mixing in your own logic into the warning.
+ *
+ *  $('#my-form').areYouSure( {'silent':true} );
+ *  $(window).on('beforeunload', function() {
+ *    isSunday = (0 == (new Date()).getDay());
+ *    if ($('#my-form').hasClass('dirty') && isSunday) {
+ *        return "Because it's Sunday, I'll be nice and let you know you forgot to save!";
+ *    }
+ *  }
+ */
+(function($) {
+  
+  $.fn.areYouSure = function(options) {
+      
+    var settings = $.extend(
+      {
+        'message' : 'You have unsaved changes!',
+        'dirtyClass' : 'dirty',
+        'change' : null,
+        'silent' : false,
+        'addRemoveFieldsMarksDirty' : false,
+        'fieldEvents' : 'change keyup propertychange input',
+        // subFormSelector has been added to allow the selection of only a sub-area
+        // of the form.  This was needed for screens such as web_metadata_edit_parent.jsp
+        // where we have a form that contains both editable fields that we need to check
+        // if they are dirty (e.g. input checkboxes, select, and textarea HTML elements)
+        // and inputs that support the action links that we do not want to check if they
+        // are dirty (e.g. input checkboxes for Order Work Instructions, Order Lines, etc.).
+        // Although are-you-sure allows inputs to be ignored if they have the "ays-ignore"
+        // class or the data-ays-ignore-"true" attribute, we would have to modify the
+        // JSF Java rendering code to add a class or data attribute, which would be a bit
+        // of a pain, so I added the subFormSelector.
+        // USAGE:  It is highly recommended that you use the subFormSelector with a standard
+        //         CSS selector to gather elements first since the :input jQuery pseudo
+        //         selector (used in the fieldSelector to filter out submit and button
+        //         elements) is NOT A NATIVE BROWSER ROUTINE, whereas standard CSS selectors
+        //         use the native browser routines to find the elements in the document (see
+        //         the jQuery documentation for the :input pseudo selector).  Although the
+        //         fieldSelector uses the :input selector to filter out submit and button
+        //         elements, you are only using it on the subset of elements selected by
+        //         using the subFormSelector with a standard (i.e. fast) CSS selector.
+        //         See the documentation above for a usage example.
+		'subFormSelector' : 'input, select, textarea',
+        'fieldSelector': ":input:not(input[type=submit]):not(input[type=button])"
+      }, options);
+
+    var getValue = function($field) {
+      if ($field.hasClass('ays-ignore')
+          || $field.hasClass('aysIgnore')
+          || $field.attr('data-ays-ignore')
+          || $field.attr('name') === undefined) {
+        return null;
+      }
+
+      if ($field.is(':disabled')) {
+        return 'ays-disabled';
+      }
+
+      var val;
+      var type = $field.attr('type');
+      if ($field.is('select')) {
+        type = 'select';
+      }
+
+      switch (type) {
+        case 'checkbox':
+        case 'radio':
+          val = $field.is(':checked');
+          break;
+        case 'select':
+          val = '';
+          $field.find('option').each(function(o) {
+            var $option = $(this);
+            if ($option.is(':selected')) {
+              val += $option.val();
+            }
+          });
+          break;
+        default:
+          val = $field.val();
+      }
+
+      return val;
+    };
+
+    var storeOrigValue = function($field) {
+      $field.data('ays-orig', getValue($field));
+    };
+
+    var checkForm = function(evt) {
+
+      var isFieldDirty = function($field) {
+        var origValue = $field.data('ays-orig');
+        if (undefined === origValue) {
+          return false;
+        }
+        return (getValue($field) != origValue);
+      };
+
+      var $form = ($(this).is('form')) 
+                    ? $(this)
+                    : $(this).parents('form');
+
+      // Test on the target first as it's the most likely to be dirty
+      if (isFieldDirty($(evt.target))) {
+        setDirtyStatus($form, true);
+        return;
+      }
+      var subformJQ = $($form).find(settings.subFormSelector);
+	  var $fields = subformJQ.filter(settings.fieldSelector);
+
+      if (settings.addRemoveFieldsMarksDirty) {              
+        // Check if field count has changed
+        var origCount = $form.data("ays-orig-field-count");
+        if (origCount != $fields.length) {
+          setDirtyStatus($form, true);
+          return;
+        }
+      }
+
+      // Brute force - check each field
+      var isDirty = false;
+      $fields.each(function() {
+        $field = $(this);
+        if (isFieldDirty($field)) {
+          isDirty = true;
+          return false; // break
+        }
+      });
+      
+      setDirtyStatus($form, isDirty);
+    };
+
+    var initForm = function($form) {
+      var subformJQ = $($form).find(settings.subFormSelector);
+	  var fieldsJQ = subformJQ.filter(settings.fieldSelector);
+      $(fieldsJQ).each(function() { storeOrigValue($(this)); });
+      $(fieldsJQ).unbind(settings.fieldEvents, checkForm);
+      $(fieldsJQ).bind(settings.fieldEvents, checkForm);
+      $form.data("ays-orig-field-count", $(fieldsJQ).length);
+      setDirtyStatus($form, false);
+    };
+
+    var setDirtyStatus = function($form, isDirty) {
+      var changed = isDirty != $form.hasClass(settings.dirtyClass);
+      $form.toggleClass(settings.dirtyClass, isDirty);
+        
+      // Fire change event if required
+      if (changed) {
+        if (settings.change) settings.change.call($form, $form);
+
+        if (isDirty) $form.trigger('dirty.areYouSure', [$form]);
+        if (!isDirty) $form.trigger('clean.areYouSure', [$form]);
+        $form.trigger('change.areYouSure', [$form]);
+      }
+    };
+
+    var rescan = function() {
+      var $form = $(this);
+      var subformJQ = $($form).find(settings.subFormSelector);
+	  var fieldsJQ = subformJQ.filter(settings.fieldSelector);
+      $(fieldsJQ).each(function() {
+        var $field = $(this);
+        if (!$field.data('ays-orig')) {
+          storeOrigValue($field);
+          $field.bind(settings.fieldEvents, checkForm);
+        }
+      });
+      // Check for changes while we're here
+      $form.trigger('checkform.areYouSure');
+    };
+
+    var reinitialize = function() {
+      initForm($(this));
+    }
+
+		/*
+		 * The following section of code was present in the original jQuery
+		 * are-you-sure plugin file since it was originally designed to be used
+		 * as a simple drop-in file that used the OnBeforeUnload event to
+		 * trigger its functionality. This usage is not suitable for the Order
+		 * Metadata Edit functionality that we are currently using are-you-sure
+		 * for since it leaves the progress box displayed continually. However,
+		 * I thought it might be helpful to leave it in so that anyone looking
+		 * at the code could get an idea of its original design intention, which
+		 * was to be called right before the page unloads. It also may be useful
+		 * in its original functionality somewhere else in Anixter's front end
+		 * code.
+		 */
+    
+   // if (!settings.silent && !window.aysUnloadSet) {
+   //   window.aysUnloadSet = true;
+   //   $(window).bind('beforeunload', function() {
+   //     $dirtyForms = $("form").filter('.' + settings.dirtyClass);
+   //     if ($dirtyForms.length == 0) {
+   //       return;
+   //     }
+        // Prevent multiple prompts - seen on Chrome and IE
+   //      if (navigator.userAgent.toLowerCase().match(/msie|chrome/)) {
+   //       if (window.aysHasPrompted) {
+   //         return;
+   //       }
+   //       window.aysHasPrompted = true;
+   //       window.setTimeout(function() {window.aysHasPrompted = false;}, 900);
+   //     }
+   //     return settings.message;
+   //   });
+   // }
+
+    return this.each(function(elem) {
+      if (!$(this).is('form')) {
+        return;
+      }
+      var $form = $(this);
+        
+      $form.submit(function() {
+        $form.removeClass(settings.dirtyClass);
+      });
+      $form.bind('reset', function() { setDirtyStatus($form, false); });
+      // Add a custom events
+      $form.bind('rescan.areYouSure', rescan);
+      $form.bind('reinitialize.areYouSure', reinitialize);
+      $form.bind('checkform.areYouSure', checkForm);
+      initForm($form);
+    });
+  };
+})(jQuery);

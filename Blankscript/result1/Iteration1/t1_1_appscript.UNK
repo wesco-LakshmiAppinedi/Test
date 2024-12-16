@@ -1,0 +1,394 @@
+//
+//  sets focus to first available field
+//
+function setFocus(){                                //$ Function
+try{
+    var ii;
+    var jj;
+    var theElm
+    if(document.forms){
+        for(ii=0; ii < document.forms.length; ii++){
+            for(jj=0; jj < document.forms[ii].elements.length; jj++){
+                theElm = document.forms[ii].elements[jj];
+                if(!theElm.disabled && (theElm.type == "text" || theElm.tagName=="SELECT") && !theElm.readonly){
+                    if(theElm.style.visibility != "hidden" && theElm.skipattribute == null && !jQuery(theElm).hasClass("noFocus")) {
+                        theElm.focus();
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}catch(e){}
+}
+
+//
+//  calls default submit
+//
+function callDefaultSubmit()
+{
+    // process only the Enter key
+    if (event.keyCode == 13)
+    {
+        // cancel the default submit
+        event.returnValue=false;
+        event.cancel = true;
+        // submit the form by programmatically clicking the specified button
+        var btn = findDefaultSubmit();
+        
+        if( btn != undefined )
+        {       
+            btn.click();
+        }
+    }
+}
+
+function findDefaultSubmit()
+{
+    var obj = document.getElementsByTagName( "INPUT" );
+    for( var i=0; i < obj.length; i++ )
+    {
+        if( obj[i].type == "submit" )
+            return obj[i]; 
+    }
+}
+
+/* usage: onKeyUp="uppercase(this);" */
+function uppercase(ele) {
+    ele.value = ele.value.toUpperCase();
+}
+
+function popupWindow( aURL, aName, aFeatureList )
+{
+    var w = window.open( aURL, aName, aFeatureList );
+    w.focus();
+}
+
+/**
+ * Forces input to lower case characters.  To turn this on, add the following
+ * attribute to either the FORM element for all fields within the form, or to a
+ * particular field (i.e., INPUT, TEXTAREA, etc.):
+ *
+ *      onkeypress="return forceLower();"
+ *
+ * @param   cancel      If supplied and <code>true</code> will cancel event bubbling
+ * @see     cancelEvent()
+ */
+//! pmj 2002/02/20  Added this function
+function forceLower(cancel){                                        //$ Function
+    if(window.event.keyCode >= 65 &&
+        window.event.keyCode <= 90)window.event.keyCode += 32;
+    if(arguments.length == 1){
+        if(arguments[0])cancelEvent();
+    }
+    return true;
+}
+
+/**
+ * Forces input to upper case characters.  To turn this on, add the following
+ * attribute to either the FORM element for all fields within the form, or to a
+ * particular field (i.e., INPUT, TEXTAREA, etc.):
+ *
+ *      onkeypress="return forceUpper();"
+ *
+ * @param   cancel      If supplied and <code>true</code> will cancel event bubbling
+ * @see     cancelEvent()
+ */
+//! pmj 2002/02/20  Added "return true" for working in event handlers more easily
+//!                 Also added argument to cancel event bubbling
+function forceUpper(cancel){                                        //$ Function
+    if(window.event.keyCode >= 97 &&
+        window.event.keyCode <= 122)window.event.keyCode -= 32;
+    if(arguments.length == 1){
+        if(arguments[0])cancelEvent();
+    }
+    return true;
+}
+
+/**
+ * The default empty onLoad function called on body onLoad while loading the default.jsp.
+ * Whoever wants to override this can do so by implementing the same in their JSP.
+ *
+ * example:
+ * <h:form>
+ *  <f:verbatim>
+ *    <script language="JavaScript">
+ *      function OnLoad(){
+ *        alert ("Overridden OnLoad");
+ *      }
+ *    </script>
+ *  </f:verbatim>
+ *  ..
+ *  ..
+ * </h:form>
+ */
+function OnLoad(){
+    // resize
+    //resizeFooter();
+}
+
+function resizeFooter()
+{
+    var a = document.getElementById( "TemplateContentArea" );
+    if(a)
+    {
+        var offsetheight = 150;
+        if( window.moz )
+            a.height=window.innerHeight-offsetheight
+        else
+            a.height=document.body.clientHeight-offsetheight;
+    }
+}
+
+ 	
+function isLogsPresent(){
+	if(((document.documentElement.getElementsByTagName('body'))[0].lastChild.data).indexOf('<logs>')!= -1)
+		return true;
+	else
+		return false;
+}
+
+ 	
+function showLogs(){
+	 // Use destination window to print the tree.  If destinationWIndow is
+	 //   not specified, create a new window and print the tree into that window
+	 var outputWindow=window.open('', 'Popup', 'scrollbars=yes,toolbar=no,resizable=yes,height=300,width=800', false );
+	 // make a valid html page
+	 outputWindow.document.open("text/html", "replace");
+	 outputWindow.document.write("<HTML><HEAD><TITLE>WMX - Log</TITLE></HEAD><BODY>\n");
+	 outputWindow.document.write("<CODE><PRE>\n");
+	 if(isLogsPresent())
+		 outputWindow.document.write((document.documentElement.getElementsByTagName('body'))[0].lastChild.data);
+  	 else
+		outputWindow.document.write("No Logs Present For this screen");
+	 outputWindow.document.write("</PRE></CODE>\n");
+	 outputWindow.document.write("</BODY></HTML>\n");
+	 
+	 // Here we must close the document object, otherwise Mozilla browsers 
+	 //   might keep showing "loading in progress" state.
+	 outputWindow.document.close();    		
+}
+
+function checkForLogsOnLoad(){
+    
+    var logContentArea = document.getElementById( "LogContentArea" );
+    
+    if(isLogsPresent())
+		logContentArea.innerHTML="<a href='javascript:showLogs();'>Showlogs</a>";
+}
+
+var functionArray = new Array();
+
+/***********************************************************************
+ *      This Function disables all button on form once Submit is done  *
+ *																	   *
+ ***********************************************************************/
+function disableForm() {
+	if( document.forms.length == 0 )
+		return;
+		
+	var theform = document.forms[0]; 
+
+	if (document.all || document.getElementById) {
+		for (i = 0; i < theform.length; i++) {
+			var tempobj = theform.elements[i];
+			if (tempobj.type.toLowerCase() == "submit" || tempobj.type.toLowerCase() == "reset" || tempobj.type.toLowerCase() == "button"){
+				functionArray[tempobj]=tempobj.onclick;
+				tempobj.onclick = function(){return false;};
+			}
+		}
+		//return true;
+	}
+	else {
+		alert("The form has been submitted.  But, since you're not using IE 4+ or NS 6, the submit button was not disabled on form submission.");
+		//return false;
+  	}
+}
+
+
+function enableForm(){
+	if( document.forms.length == 0 )
+		return;
+	
+	var theform = document.forms[0]; 
+
+	// Enabling Buttons
+	if (document.all || document.getElementById) {
+		for (i = 0; i < theform.length; i++) {
+			var tempobj = theform.elements[i];
+			if (tempobj.type.toLowerCase() == "submit" || tempobj.type.toLowerCase() == "reset" || tempobj.type.toLowerCase() == "button"){
+				tempobj.onclick = functionArray[tempobj];
+			}
+		}
+		//return true;
+	}
+	else {
+		alert("The form is not disabled.");
+		//return false;
+  	}
+  	if(document.getElementById("overlayDiv"))
+		document.getElementById("overlayDiv").style.display = 'none';
+}
+
+var progresswindow = null;
+var progressbarDivId = null;
+var progressbarTitle = null;
+var tempUnshowProgress = true;	// by default set to false.  this is because when downloading page gets loaded twice
+var beforeunloadCount = 0;
+
+/**
+* we load up the dhtml window first because dhtml for firefox will not load images when the page has already submitted
+**/
+function setupProgressBox(divId, progresswindowtitle){
+	// set temp unshow prograss to true;
+	tempUnshowProgress = false;
+	progressbarDivId = divId;
+	progressbarTitle = progresswindowtitle;
+
+	progresswindow = dhtmlwindow.open("ProgressBox", "div", progressbarDivId, progressbarTitle, "height=40px,center=1,resize=0,scrolling=0", "recal");
+	progresswindow.hide();
+
+	progresswindow.onclose = function(){
+		enableForm();
+		return true;
+	}
+	
+	window.onbeforeunload= function(){
+		OnBeforeUnload();
+	}
+}
+
+/**
+call setupProgressBox first
+**/
+function showProgressBox()
+{
+	if( tempUnshowProgress )
+		return;
+
+	progresswindow.show();
+	progresswindow.moveTo("middle","middle");
+	disableForm();
+	if(document.getElementById("overlayDiv"))
+		document.getElementById("overlayDiv").style.display = 'block';	
+	
+}
+
+/**
+this sets the temp unshow progress to true and sets a timeout to re-enable the progress bar
+**/
+function tempUnshowProgressBox()
+{
+	tempUnshowProgress = true;
+	window.setTimeout('closeProgressBox()', 5000);
+}
+
+function closeProgressBox(){
+	if( progresswindow )
+	{
+		tempUnshowProgress = false;
+		progresswindow.hide();	
+		if(document.getElementById("overlayDiv"))
+			document.getElementById("overlayDiv").style.display = 'none';	
+	}
+}
+
+function OnBeforeUnload(){
+	window.setTimeout(showProgressBox, 50);
+}
+
+function refresh()
+{
+    window.location.reload( false );
+}
+
+function changeKey (textControl, evt, keyChecker) {
+  var keyCode = evt.keyCode ? evt.keyCode :
+                evt.charCode ? evt.charCode :
+		evt.which ? evt.which : void 0;
+  var key;
+  if (keyCode) {
+    key = String.fromCharCode(keyCode);
+  }
+  var keyCheck = keyChecker(keyCode, key);
+  if (keyCode && window.event && !window.opera) {
+    if (keyCheck.cancelKey) {
+      return false;
+    }
+    else if (keyCheck.replaceKey) {
+      window.event.keyCode = keyCheck.newKeyCode;
+      if (window.event.preventDefault) {
+        window.event.preventDefault();
+      }
+      return true;
+    }
+    else {
+      return true;
+    }
+  }
+  else if (typeof textControl.setSelectionRange != 'undefined') {
+    if (keyCheck.cancelKey) {
+      if (evt.preventDefault) {
+
+        evt.preventDefault();
+      }
+      return false;
+    }
+    else if (keyCheck.replaceKey) {
+      // cancel the key event and insert the newKey for the current
+      // selection
+      if (evt.preventDefault) {
+	  evt.preventDefault();
+      }
+      var oldSelectionStart = textControl.selectionStart;
+      var oldSelectionEnd = textControl.selectionEnd;
+      var selectedText = textControl.value.substring(oldSelectionStart,
+                                                     oldSelectionEnd);
+      var newText = typeof keyCheck.newKey != 'undefined'
+                    ? keyCheck.newKey
+                    : String.fromCharCode(keyCheck.newKeyCode);
+      textControl.value = 
+        textControl.value.substring(0, oldSelectionStart) +
+        newText +
+        textControl.value.substring(oldSelectionEnd);
+      textControl.setSelectionRange(oldSelectionStart + newText.length,
+                                    oldSelectionStart + newText.length);
+      return false;
+    }
+    else {
+      return true;
+    } 
+  }
+  else if (keyCheck.cancelKey) {
+    if (evt.preventDefault) {
+      evt.preventDefault();
+    }
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+function lettersToUpperCase(keyCode, key) {
+  var newKey = key.toUpperCase();
+  if (newKey != key) {
+    return { replaceKey: true,
+             newKeyCode: newKey.charCodeAt(),
+             newKey: newKey };
+  }
+  else {
+    return { cancelKey: false };
+  }
+}
+
+// If the text added to a TextArea is longer than the maxLength, then it is
+// truncated to the maxLength.
+function textAreaLengthLimiter(element, maxLength) {
+	var currentLength = element.value.length;
+	if(currentLength >= maxLength) {
+		element.value = element.value.substring(0, maxLength);
+		return false;
+	}
+	return true;
+}

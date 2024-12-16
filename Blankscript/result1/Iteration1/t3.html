@@ -1,0 +1,259 @@
+
+	<!DOCTYPE HTML >
+	<html>
+		
+		
+		<head>
+			<script type='text/javascript' src='/wmx/a4j.res/org.ajax4jsf.framework.ajax.AjaxScript.faces'></script><META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980">
+			<link rel="shortcut icon" href="/wmx/favicon-32x32.png" type="image/png">
+			<link rel="icon" href="/wmx/favicon-32x32.png" type="image/png">
+			<title>
+				WMX Cloud
+				| Welcome
+			</title>
+			<link rel="stylesheet" type="text/css" href="/wmx/css/wmx_consolidated.css"></link>
+			<link rel="stylesheet" type="text/css" href="/wmx/css/drag_drop.css"></link>
+			<link rel="stylesheet" href="/wmx/css/treegrid/jquery.treegrid.css" />
+			<link rel="stylesheet" href="/wmx/css/jquery-ui.css" />
+			<link rel="stylesheet" type="text/css" href="/wmx/css/anixter-wmx-redesign.css"></link>
+			<script type="text/javascript" src="/wmx/javascript/appscript.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/jscookmenu/JSCookMenu.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/jscookmenu/Click/theme.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/dhtmlwindow.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/wmx-global.js"></script>
+			
+				<script type="text/javascript" src="/wmx/javascript/dragdrop/prototype.js"></script>
+			
+			<script type="text/javascript" src="/wmx/javascript/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/jquery-ui.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/modalDiv.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/jquery.treegrid.js"></script>
+			<script type="text/javascript" src="/wmx/javascript/are-you-sure.js"></script>
+			<script type="text/javascript"> 
+				// define jquery as $j
+				var $j = jQuery.noConflict();
+				function openAbout() {
+		    		window.popup = window.open('web_about.faces','About','width=400, height=300, top=200, left=350,toolbar=no,resizable=yes,scrollbars=yes');
+		    	}
+		    	
+				// wmxWebUiAjaxCompleted is an empty generic default function that gets called when an A4J Ajax call is completed so that we don't take
+				// an error when the function is not found.  It was added to provide a default function to give us easy access to the onComplete event
+				// for various webUI components.  You can override it in your Javascript code to perform processing upon completion of the A4J call.
+				function wmxWebUiAjaxCompleted(ajaxID) {
+				}
+			</script>
+		</head>
+		
+		<body onload="OnLoad()">
+			<div id="overlayDiv" class="overlay" style="display:none"></div>
+			<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				<tr id="rowTopHeader" valign="top">
+					<td style="background-color: #F7F7F7;">
+						<table width="100%" cellpadding="1" cellspacing="0">
+							<tr valign="middle">
+								<td align="left"><img src="/wmx/image/WMX_logo_ia_bolt.png" alt="WMX Cloud"	align="left" /></td>
+								<td align="left" class="title">
+									Quality
+								</td>
+								<td id="menu" align="left"> 
+									<form id="changeDc" name="changeDc" method="post" action="/wmx/welcome.faces" enctype="application/x-www-form-urlencoded"><input type="hidden" id="handlerName" name="handlerName" value="" /><div id="userDcList" class="locationSelector">Current DC:&nbsp;<select id="changeDc:dcCodeList" name="changeDc:dcCodeList" size="1" class="noFocus" onchange="A4J.AJAX.Submit('j_id_jsp_2077865857_0','changeDc',event,{'actionUrl':'/wmx/welcome.faces','parameters':{'changeDc:dcChangeAjaxCall':'changeDc:dcChangeAjaxCall'} } )">	<option value="000">(000) Default DC for Savyint Users</option>	<option value="082">(082) ACCUTECH New York (Plainview), NY</option>	<option value="12619">(12619) UBS Milford, MA DDP</option>	<option value="13705">(13705) Pilot</option>	<option value="16023">(16023) ACCUTECH Houston,TX</option>	<option value="198">(198) Raleigh US LDC</option>	<option value="215">(215) ACCUTECH Philadelphia ,PA (Folcroft)</option>	<option value="26L">(26L) ACCUTECH Denver, CO (Centennial)
+</option>	<option value="340">(340) ACCUTECH Charlotte, NC</option>	<option value="353">(353) ACCUTECH Atlanta (Roswell),GA</option>	<option value="354">(354) ACCUTECH Tampa, FL</option>	<option value="363">(363) AccuTech Lenexa, KS</option>	<option value="388">(388) ACCUTECH Boston (Andover), MA</option>	<option value="397">(397) ACCUTECH Richmond,VA</option>	<option value="417">(417) ACCUTECH Nashville ,TN</option>	<option value="428">(428) ACCUTECH Charleston (North Charleston),SC</option>	<option value="509">(509) Wire &amp; Cable-US (Cincy)</option>	<option value="520">(520) ACCUTECH Baltimore (Hanover) MD</option>	<option value="540">(540) ACCUTECH Ft Lauderdale (Pompano Beach), FL</option>	<option value="542">(542) ACCUTECH Raleigh (Morrisville) NC</option>	<option value="543">(543) AccuTech Livonia, MI</option>	<option value="54C">(54C) ACCUTECH Pittsburgh (Carnegie),PA</option>	<option value="556">(556) ACCUTECH San Antonio,TX</option>	<option value="56C">(56C) ACCUTECH San Francisco (Hayward) CA</option>	<option value="591">(591) ACCUTECH Greenville, SC</option>	<option value="59C">(59C) ACCUTECH Jacksonville,FL</option>	<option value="638">(638) ACCUTECH Phoenix (Mesa), AZ</option>	<option value="652">(652) ACCUTECH Chicago (Mount Prospect) IL</option>	<option value="656">(656) ACCUTECH Columbus,OH</option>	<option value="66H">(66H) ACCUTECH Minneapolis (Maple Grove),MN</option>	<option value="692">(692) ACCUTECH Los Angles (La Mirada), CA</option>	<option value="693">(693) ACCUTECH Sacramento,CA</option>	<option value="694">(694) ACCUTECH Dallas (Carrolton)TX</option>	<option value="696">(696) ACCUTECH Norfolk (Chesapeak), VA</option>	<option value="7302">(7302) Warrendale</option>	<option value="823">(823) ACCUTECH Seattle (Tukwilla), WA</option>	<option value="89E">(89E) ACCUTECH Omaha, NE</option>	<option value="936" selected="selected">(936) ACCUTECH Houston,TX</option>	<option value="962">(962) AccuTech Austin, TX</option>	<option value="964">(543) AccuTech Livonia, MI</option>	<option value="97A">(97A) IT Home Location</option>	<option value="PERF12619">(PERF12619) Performance Testing DC</option>	<option value="ZBASE1">ZBASE CONFIG SET1</option></select></div><input type="hidden" name="changeDc_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="rO0ABXVyABNbTGphdmEubGFuZy5PYmplY3Q7kM5YnxBzKWwCAAB4cAAAAAN0AAExcHQADC93ZWxjb21lLmpzcA==" /></form><div id="hiddenLocationsList" class="locationSelector"></div>
+								</td>
+								<td align="right">
+									<table class="TemplateMenuBanner" cellspacing="0" cellpadding="0">
+										<tr>
+											
+											<form id="topNavForm" name="topNavForm" method="post" action="/wmx/welcome.faces" enctype="application/x-www-form-urlencoded"><input type="hidden" id="topNavForm:handlerName" name="topNavForm:handlerName" value="" />
+									  			<td class="tabsInner">
+									  				PERF108
+												</td>
+
+                                                <td class="tabsInner" >
+                                                    <script type="text/javascript" src="javascript/htmlLinkRenderer.js"><!--
+
+//--></script><a href="#" onclick="return oamSubmitForm('topNavForm','topNavForm:webDefaultUserDCLink_id');" id="topNavForm:webDefaultUserDCLink_id"><img src="/wmx/image/emptyStar.png" alt="Default DC" style="width: 24px;" /></a>
+                                                </td>
+
+                                                <td class="tabsInner">
+                                                    <a href="#" onclick="var cf = function(){ return validateLogout();};var oamSF = function(){return oamSubmitForm('topNavForm','topNavForm:webLogoutLink_id',null,[['logoutRequested','true']]);};return (cf()==false)? false : oamSF();" id="topNavForm:webLogoutLink_id">Logout</a>
+                                                </td>
+											<input type="hidden" name="topNavForm_SUBMIT" value="1" /><input type="hidden" name="javax.faces.ViewState" id="javax.faces.ViewState" value="rO0ABXVyABNbTGphdmEubGFuZy5PYmplY3Q7kM5YnxBzKWwCAAB4cAAAAAN0AAExcHQADC93ZWxjb21lLmpzcA==" /></form>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr id="rowHeader">
+					<td class="TemplateNavArea">
+						<table width="100%" cellpadding="1" cellspacing="0">
+							<tr>
+								<td><script type="text/javascript"><!--
+var mymenu = [[null,"Inbound",null,"_self", null,[null,"Inbound Shipment Management","query_viewer.faces?id=InboundShipment","_self", null],[null,"Inbound Shipment Unload","bulk_inbound_shipment_unload.faces","_self", null],[null,"Check-in Overview","query_viewer.faces?id=NONASNCHECKIN","_self", null],[null,"Actual Receipt Management","query_viewer.faces?id=ACTUAL_RECEIPT","_self", null],[null,"Expected Receipt Management","query_viewer.faces?id=ER_MGMT","_self", null],[null,"ER Inbound Shipment Management","query_viewer.faces?id=ERINBOUNDSHIPMGMT","_self", null],[null,"Putaway Management","query_viewer.faces?id=PAPER_PUTAWAY","_self", null],[null,"ASN Management","query_viewer.faces?id=ASN_MANAGEMENT","_self", null],[null,"Task Management",null,"_self", null,[null,"Inbound-Basic","query_viewer.faces?id=tskManagementInbound","_self", null],[null,"Inbound-Activity","query_viewer.faces?id=TSKMNG_INBND_ACTVITY","_self", null],[null,"Inbound-Movement","query_viewer.faces?id=TSKMNG_INBND_MOVMENT","_self", null],[null,"Inbound-Details","query_viewer.faces?id=tskMngmnt_inbErd","_self", null]]],[null,"Outbound",null,"_self", null,[null,"Wave Management",null,"_self", null,[null,"Tasks","query_viewer.faces?id=TASKS1","_self", null],[null,"Orders","query_viewer.faces?id=ORDER_CRITERIA","_self", null],[null,"Order Lines","query_viewer.faces?id=WAVE_MGT_ORDER_LINE","_self", null]],[null,"Task Management",null,"_self", null,[null,"Outbound-Basic","query_viewer.faces?id=tsk_mngmntBscCrt","_self", null],[null,"Outbound-Activity","query_viewer.faces?id=TSKMNG_OTBND_ACTVITY","_self", null],[null,"Outbound-Movement","query_viewer.faces?id=TSKMNG_OTBND_MOVMENT","_self", null],[null,"Outbound-Details","query_viewer.faces?id=tskmngmnt_outbndord","_self", null]],[null,"Value Add",null,"_self", null,[null,"Value Add Overview","query_viewer.faces?id=VALUE_ADD_OVERVIEW","_self", null],[null,"Bill Of Material Inquiry","query_viewer.faces?id=BILL_OF_MATERIAL_INQ","_self", null],[null,"VA Tasks","query_viewer.faces?id=TASKSVA","_self", null],[null,"VA Wave Management Orders","query_viewer.faces?id=VA_WAVE_MGMT","_self", null],[null,"VA Wave Management Order Lines","query_viewer.faces?id=VA_WAVE_MGMT_LINES","_self", null],[null,"VA Inventory Management","query_viewer.faces?id=VAMANAGEMENT","_self", null],[null,"VA Inventory Contention Management","query_viewer.faces?id=inventoryContMgt","_self", null],[null,"VA Picks","query_viewer.faces?id=VALUE_ADD_PICKS","_self", null]],[null,"Splitting",null,"_self", null,[null,"Split Mgmt Overview","query_viewer.faces?id=splitMngment","_self", null],[null,"Split LP Overview","query_viewer.faces?id=split_lpOverview","_self", null]],[null,"Packing",null,"_self", null,[null,"Packing Overview","query_viewer.faces?id=PACK_OVERVIEW","_self", null],[null,"Pack By Order","query_viewer.faces?id=INTF_ORDER_QUICK","_self", null],[null,"Pack Containers","query_viewer.faces?id=PACK_CONTAINERS","_self", null]],[null,"Shipping",null,"_self", null,[null,"Dock Door Management","query_viewer.faces?id=dockDoorMgmt","_self", null],[null,"Shipping Task Management","query_viewer.faces?id=SHIPTASKMANAGEMENT02","_self", null],[null,"Ship Group Management","query_viewer.faces?id=SHIPGROUPMGMT","_self", null],[null,"Dock Door Error Management","query_viewer.faces?id=DOCK_DOOR_ERRORS","_self", null],[null,"Completed Ship Task Management","query_viewer.faces?id=COMPLETEDSHIPTASK","_self", null],[null,"Packing Grid","web_pack_grid_view.faces","_self", null]],[null,"Priority Transfers","query_viewer.faces?id=PICK_TASK_DEPENDENCY","_self", null],[null,"Paper Based Pick","query_viewer.faces?id=PICK_PAPER_BASED","_self", null]],[null,"Management",null,"_self", null,[null,"Product Management","query_viewer.faces?id=ProdManagementC","_self", null],[null,"Task Summary","query_viewer.faces?id=taskSummaryCriteria","_self", null],[null,"Task Exceptions","query_viewer.faces?id=Task_Exceptions","_self", null],[null,"License Plate Management","query_viewer.faces?id=LP_Management","_self", null],[null,"Audit Management","query_viewer.faces?id=AUDIT_MGMT","_self", null],[null,"Inventory Management","query_viewer.faces?id=INVENTORY_MANAGEMENT","_self", null],[null,"Task Management",null,"_self", null,[null,"Support-Basic","query_viewer.faces?id=tskmngmnt_supportbsc","_self", null],[null,"Support-Activity","query_viewer.faces?id=tskmngment_activity","_self", null],[null,"Support-Movement","query_viewer.faces?id=tskmngmnt_movement","_self", null],[null,"Task Research","query_viewer.faces?id=TASKRESEARCH","_self", null],[null,"Support-Details","query_viewer.faces?id=taskmngmnt_suportdet","_self", null]],[null,"Cycle Count",null,"_self", null,[null,"Cycle Count Management","query_viewer.faces?id=CYCLE_COUNT_MGMT","_self", null],[null,"Cycle Count By Location","query_viewer.faces?id=CYCLE_COUNTPBY_LOC","_self", null],[null,"Product Inventory Cycle Count","query_viewer.faces?id=PI_CYCLE_COUNT","_self", null],[null,"Cycle Count Paper",null,"_self", null,[null,"Block Audit",null,"_self", null,[null,"Create Set","query_viewer.faces?id=CYCLE_CT_PPR_CRS_BLK","_self", null],[null,"Printing & Set Entry Page","query_viewer.faces?id=CYCLE_CT_PPR_SLP_BLK","_self", null]],[null,"Cycle Count",null,"_self", null,[null,"Create Set","query_viewer.faces?id=CYCLE_CT_PPR_CRS_CYC","_self", null],[null,"Printing & Set Entry Page","query_viewer.faces?id=CYCLE_CT_PPR_SLP_CYC","_self", null]],[null,"Recount",null,"_self", null,[null,"Create Set","query_viewer.faces?id=CYCLE_CT_PPR_CRS_RCT","_self", null],[null,"Printing & Set Entry Page","query_viewer.faces?id=CYCLE_CT_PPR_SLP_RCT","_self", null]]],[null,"Physical Inventory","query_viewer.faces?id=PI_CYCLE_COUNT_DTL","_self", null]],[null,"Kanban",null,"_self", null,[null,"Manual Zone","query_viewer.faces?id=zone_replenishment","_self", null],[null,"Manual Fixed Locations","query_viewer.faces?id=fixed_locations","_self", null]],[null,"Warehouse Monitor",null,"_self", null,[null,"Task Queries","floorplan_task_view.faces","_self", null],[null,"Inventory Queries","floorplan_inventory_view.faces","_self", null]]],[null,"Configuration",null,"_self", null,[null,"Mapping Logical",null,"_self", null,[null,"Attribute Master","query_viewer.faces?id=ATTRIBUTE_MGMT","_self", null],[null,"Attribute Maps","query_viewer.faces?id=ATTRIBUTE_MAP_MGMT2","_self", null],[null,"Attribute Collection","query_viewer.faces?id=ATTRIBUTE_CLCT_MGMT","_self", null],[null,"Cut Machine Management","query_viewer.faces?id=CUT_MACHINE_MGMT","_self", null],[null,"Location Calculation Chain","query_viewer.faces?id=LOCATION_CALC_CHAIN","_self", null],[null,"Location Calculation","query_viewer.faces?id=LOCATION_CALCULATION","_self", null],[null,"Pick Option Config","query_viewer.faces?id=PICKOPTIONCONFIG","_self", null],[null,"Product Class Config","query_viewer.faces?id=PRODUCTCLASSCONFIG","_self", null],[null,"Task Type Movement","query_viewer.faces?id=TASK_TYPE_MOVEMENT","_self", null],[null,"Work Area Movement","query_viewer.faces?id=WORK_AREA_MVMT","_self", null]],[null,"Mapping Outbound",null,"_self", null,[null,"Location Zip Association","query_viewer.faces?id=loc_zip_association","_self", null],[null,"Location Pickup Group Staging Types","query_viewer.faces?id=locPickupGrpSType","_self", null],[null,"Carrier Management","query_viewer.faces?id=CARRIER_MGMT","_self", null],[null,"Carrier Service Level","query_viewer.faces?id=CARRIER_SERVICE","_self", null],[null,"Ship Group Template","query_viewer.faces?id=SHIP_GROUP_TEMPLATE","_self", null]],[null,"Mapping Physical",null,"_self", null,[null,"Location Task Type Drop","query_viewer.faces?id=LOC_TASK_TYPE_DROP","_self", null],[null,"MSC Codes","query_viewer.faces?id=MSC_CODES","_self", null],[null,"Reason Code Type","query_viewer.faces?id=REASON_CODE_TYPE","_self", null],[null,"UOM Management","query_viewer.faces?id=UOM_MGMT","_self", null],[null,"DOCK DOORS CONFIGURATION","query_viewer.faces?id=dock_door_management","_self", null],[null,"DC Area User Access","query_viewer.faces?id=dc_area_user_access","_self", null],[null,"Package Type/Reel Type Associations","query_viewer.faces?id=PKGT_RT_ASSOC","_self", null],[null,"Material Movement Location Calculation Override","query_viewer.faces?id=MATERIALMOVEMENTLCAL","_self", null],[null,"Customer Material Movement Assigns","query_viewer.faces?id=CUSTMATERIALMOVEMENT","_self", null],[null,"Area Management","query_viewer.faces?id=AREA_MANAGEMENT","_self", null],[null,"Area To Equipment Types Allowed","query_viewer.faces?id=AREA_EQUIP_ALLOWED","_self", null],[null,"Area To Users Allowed","query_viewer.faces?id=AREA_USERS_ALLOWED","_self", null],[null,"Customer Order Type Assigns","query_viewer.faces?id=CUSTOMER_ORDER_TYPE","_self", null],[null,"Equipment Management","query_viewer.faces?id=EQUIPMENT_MGMT","_self", null],[null,"Location Area Management","query_viewer.faces?id=LOCATION_AREA_MGMT","_self", null],[null,"Location Calculation Carrier Service Overrides","query_viewer.faces?id=LOC_CALC_CS_OVERRIDE","_self", null],[null,"Location Calculation Product Overrides","query_viewer.faces?id=LOC_CALC_PROD_OVRRDE","_self", null],[null,"Location Carrier Assigns","query_viewer.faces?id=LOCATION_CARRIER","_self", null],[null,"Location Management","query_viewer.faces?id=LocationManagement","_self", null],[null,"Order Type Location Calculation Overrides","query_viewer.faces?id=ORDRTYP_LOCALC_OVERD","_self", null],[null,"Package Type","query_viewer.faces?id=PACKAGE_TYPE","_self", null],[null,"User Restricted To Equipment Types","query_viewer.faces?id=USER_RESTRICT_EQTYP","_self", null],[null,"User Restricted To Task Types","query_viewer.faces?id=USER_RESTRICT_TTYP","_self", null],[null,"Zone Package Type","query_viewer.faces?id=ZONE_PACKAGE_TYPE","_self", null],[null,"Zone Product Class","query_viewer.faces?id=ZoneProductClass","_self", null],[null,"Zone Management","query_viewer.faces?id=ZONE_MANAGEMENT","_self", null],[null,"Zone MSC Codes","query_viewer.faces?id=ZONE_MSC_CODES","_self", null],[null,"Zone Replenishment","query_viewer.faces?id=ZONE_REPL_VIEW","_self", null]],[null,"Security",null,"_self", null,[null,"All Users","query_viewer.faces?id=user_mgmt","_self", null],[null,"DC Users","query_viewer.faces?id=All_Users","_self", null],[null,"Roles","query_viewer.faces?id=ROLES","_self", null],[null,"User Roles","query_viewer.faces?id=USER_ROLES","_self", null]],[null,"Research",null,"_self", null,[null,"Zone Restriction Check","count_zone_validated_locations.faces","_self", null],[null,"ER Log Search","erLogResults.faces","_self", null],[null,"Validate DC Config","validate_dc.faces","_self", null],[null,"Product Area Analysis","product_area_analysis.faces","_self", null]],[null,"System",null,"_self", null,[null,"Bulk Request","query_viewer.faces?id=BULK_REQUEST","_self", null],[null,"Reel Types","query_viewer.faces?id=REEL_TYPES","_self", null],[null,"DC Preferences","query_viewer.faces?id=DC_PREFERENCES","_self", null],[null,"LOV Type Management","query_viewer.faces?id=LOV_TYPE_MGMT","_self", null],[null,"LOV DC Assigns","query_viewer.faces?id=LOV_DC_ASSIGN_MGMT","_self", null],[null,"System Parameters","query_viewer.faces?id=SYSTEM_PARAMETER","_self", null],[null,"Task Type","query_viewer.faces?id=TASK_TYPE_VIEW","_self", null],[null,"Configuration Map","query_viewer.faces?id=Configuration_Map","_self", null],[null,"Configuration Change Request","query_viewer.faces?id=CONFIG_CHG_REQUEST","_self", null]],[null,"UL/CSA Maintenance",null,"_self", null,[null,"Product Set Configuration",null,"_self", null,[null,"Product Set Maintenance","query_viewer.faces?id=ULCSA_PRODUCT_SETS","_self", null],[null,"Maintain Attribute Label Names","ulcsa_maint_att_label_names.faces","_self", null]],[null,"Location Settings","query_viewer.faces?id=ULCSA_LOC_SETTINGS","_self", null]]],[null,"Tools",null,"_self", null,[null,"Log Search","query_viewer.faces?id=WMXLogSearch","_self", null],[null,"Reprint in the web UI",null,"_self", null,[null,"Reprint Packed Container","query_viewer.faces?id=Reprint_pk_Container","_self", null],[null,"Miscellaneous Reprint","web_misc_reprint.faces","_self", null]],[null,"Clear Elements in Cache","configc_file_upload.faces","_self", null],[null,"User Interface Tool",null,"_self", null],[null,"App Log Management","web_applog_management.faces","_self", null],[null,"App Log Management for Messaging","web_applog_msg_management.faces","_self", null],[null,"IS Support",null,"_self", null,[null,"License Plates","query_viewer.faces?id=IS_LICENSE_PLATE","_self", null]],[null,"Printer Configuration","ext_print_config.faces","_self", null]],[null,"Indirect","indirect_task_creation.faces","_self", null],[null,"RF","rf_equipment.html","_self", null]];
+//--></script>
+<div id="menu_menu"></div>
+<script type="text/javascript"><!--
+cmDraw ('menu_menu', mymenu, 'hbr', cmThemeClick, 'ThemeClick');
+//--></script>
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr id="rowTitle">
+					<td valign="top" width="100%">
+						<table class="TemplateTitleBar" width="100%">
+							<tr>
+								<td width="40%" class="title">
+									Welcome
+								</td>
+								<td width="60%" class="message">
+									
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr id="rowMessage">
+					<td id="MessageArea" class="MessageArea" valign="top" >	
+				 
+		 				<span class="error"></span>
+		 			</td>
+				</tr>
+				<tr id="rowContent">
+					<td colspan=2 id="TemplateContentArea" class="TemplateContentArea"
+						align="center" valign="top">
+						<br>Login Successful.<br><br><br>&nbsp;
+ 		<script type="text/javascript" >
+  
+		   document.cookie="currentLoginPage=Web;expires=0;path=/wmx";
+
+		</script>
+	
+					</td>
+				</tr>
+			</table>
+
+			<div id="progressbar" style="display:none"><img src="image/indeterminate-progress-bar.gif" /></div><script><!--
+setupProgressBox('progressbar', 'Processing...');
+//--></script>
+						<!-- error report div -->
+			
+				<div id="errorBoxWrap" class="modalBoxWrap">
+					<div class="modalBoxOverlay">&nbsp;</div>    
+					<div class="vertical-offset">
+						<div id="errorBox" class="modalBox">	</div>
+    				</div>
+				</div>
+				
+			<script type="text/javascript">
+				// just set focus    
+				setFocus();
+			</script>
+			
+				<script type="text/javascript">
+					var cookieName = "currentLocation";
+
+					function writeLocationCookie(value) {
+						var expirationDate = new Date();
+						expirationDate.setFullYear(2099);
+						expirationDate = expirationDate.toGMTString();
+						
+						document.cookie=cookieName + "=" + escape(value) + ";expires=" + expirationDate;
+					}
+					
+					function readLocationCookie() {
+						var locationCookie = document.cookie;
+						if( locationCookie.length > 0 ) {
+							c_start=locationCookie.indexOf(cookieName + "=")
+							if (c_start!=-1) {
+								c_start=c_start + cookieName.length+1 
+								c_end=locationCookie.indexOf(";",c_start)
+								if (c_end!=-1) {
+									var locationId = unescape(document.cookie.substring(c_start,c_end));
+									return locationId;
+								} else {
+									var locationId = unescape(document.cookie.substring(c_start));
+									return locationId.trim();
+								}
+							} 
+						}
+						return null;
+					}
+		
+					var locationId=readLocationCookie();
+	
+					if( locationId != null) {
+						var locationSelect = document.getElementById("queryformLocation");
+						if (locationSelect) {
+							locationSelect.value = locationId;
+							// if the user switched DC's, then locationId may not be in the list...
+							if (locationSelect.value != locationId) {
+								writeLocationCookie("");
+								locationSelect.selectedIndex = -1;
+							}
+						}
+					}
+					else {
+						if (document.getElementById("queryformLocation")) {
+							writeLocationCookie(document.getElementById("queryformLocation").value);
+						}	
+					}
+				</script>
+			
+
+			<b><span class="sessionText">Please copy the following as text when logging a QC.</span></b><br/>
+			<span class="sessionText">Server Name:    </span><span class="sessionText">WMX-UI-CLUSTER</span><span class="sessionText"> | App Version:    </span><span class="sessionText">4.0.2.44 (e71ae11310530d40a4809b68735db3e6d55d4506)</span><span class="sessionText"> | Config Version: </span><span class="sessionText">4.0.2.12</span><span class="sessionText"> | App Build Date: </span><span class="sessionText">2024/11/05 21:27:10</span><span class="sessionText"> | DB Server:      </span><span class="sessionText">Unknown/Unimplemented</span><span class="sessionText"> | Tran Id:        </span><span class="sessionText">aa1cd708-2086-44b8-9922-f8824765b1fc</span><span class="sessionText"> | Tran Date:      </span><span class="sessionText">2024-11-07T09:35:45.045+0000</span><span class="sessionText"> | UserId:         </span><span class="sessionText">PERF108/936</span><span class="sessionText"> | Host Name:      </span><span class="sessionText">wmx-bolt-qa-ui-ms1</span><input type="hidden" id="wmx_transaction_id" name="wmx_transaction_id" value="aa1cd708-2086-44b8-9922-f8824765b1fc" /><input type="hidden" id="wmx_transaction_date" name="wmx_transaction_date" value="2024-11-07T09:35:45.045+0000" /> 
+		</body>
+	</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+body name: null 
+requested title:  null, actual title name: null 
+requested interface id:  null, interface id: null 
+onExitMethod body name: 
+If exists, action_section name: null 
+
+ServerName: qa.wmxbolt.wescodist.com
+ServerPort: 443
+RemoteHost: azlwmxbolt02q.wescodist.com
+RemoteAddr: 10.238.216.26
+Browser: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; Trident/4.0; .NET CLR 1.1.4322; .NET CLR 2.0.50727; InfoPath.1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)
+Locale: en_US
+
+DC: 936
+UserId: PERF108
+Equipment: null
+ConfigVersion: 4.0.2.12
+AppServer: WMX-UI-CLUSTER
+AppBuildNumber: 4.0.2.44
+AppRevision: e71ae11310530d40a4809b68735db3e6d55d4506
+AppBuildDate: 2024/11/05 21:27:10
+DBServer: Unknown/Unimplemented
+TransactionID: aa1cd708-2086-44b8-9922-f8824765b1fc 
+TransactionDate: 2024-11-07T09:35:45.045+0000 
+//-->
+
+
+
+
+
+
+
